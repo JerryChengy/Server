@@ -5,9 +5,10 @@
 extern "C"
 {
 #include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+
 };
-
-
 
 class CLuaInterface: public Singleton<CLuaInterface>
 {
@@ -20,5 +21,8 @@ protected:
 public:
 	lua_State* m_pState;
 };
+
+void RegisterLuaFunc();
+
 
 #endif

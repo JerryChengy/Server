@@ -15,6 +15,7 @@ private:
 public:
 	CTable<TABLE_TEST> m_Test;
 	CTable<TABLE_SCRIPT> m_Script;
+	std::map<const char*, CTable*> m_mapTable;
 };
 
 #define Tables CTableSet::GetSingleton()

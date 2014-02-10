@@ -13,6 +13,7 @@
 #include <iostream>
 #include <sys/stat.h>
 #include <stdlib.h>
+#include <map>
 using namespace std;
 
 #pragma warning(disable: 4996)

@@ -26,6 +26,7 @@ bool CLuaInterface::Init()
 		return false;
 	}
 	luaL_openlibs(m_pState);
+	RegisterLuaFunc();
 	return true;
 }
 
