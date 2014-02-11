@@ -6,8 +6,11 @@
 #define __CW_TABLE_H__
 #include "cw_commondefine.h"
 #include "cw_tablereader.h"
-#include "cw_tablebase.h"
 #include "cw_assert.h"
+#include "cw_luainterface.h"
+#include "cw_tableserializer.h"
+#include "cw_tools.h"
+
 template<class T>
 class CTable
 {
@@ -35,11 +38,11 @@ public:
 		int nIndex = (nUpIndex+nDownIndex)/2;
 		while (nUpIndex >= nDownIndex)
 		{
-			if (m_pRow[nIndex].m_ID > nID)
+			if (m_pRow[nIndex] > nID)
 			{
 				nUpIndex = nIndex-1;
 			}
-			else if (m_pRow[nIndex].m_ID < nID)
+			else if (m_pRow[nIndex] < nID)
 			{
 				nDownIndex = nIndex+1;
 			}
@@ -49,7 +52,7 @@ public:
 			}
 			nIndex = (nUpIndex+nDownIndex)/2;
 		}
-		if (m_pRow[nIndex].m_ID != nID)
+		if (!(m_pRow[nIndex] == nID))
 		{
 			return NULL;
 		}
@@ -59,29 +62,29 @@ public:
 	\brief
 		初始化，将磁盘文件数据加载到内存中
 	*/
-	bool Init(const char* pFileName)
+	bool Load(const char* pFileName)
 	{
 		__CleanUp();
 		if (!m_TableReader.Init(pFileName))
 		{
+			m_TableReader.Release();
 			return false;
 		}
 		int nLineCount = m_TableReader.GetLineCount();
 		if (nLineCount <= HEAD_LINE_COUINT)
 		{
+			m_TableReader.Release();
 			return true;
 		}		
 		m_LineCount = nLineCount - HEAD_LINE_COUINT;
 		m_pRow = new T[m_LineCount];		
-		__SkipHeader();
+		__ReadHeader();
 		for (int i=0;i<m_LineCount;++i)
 		{
 			const char* pLine = m_TableReader.GetLine();			
-			if (!m_pRow[i].Init(pLine))
-			{
-				Assert(false);
-			}
-			m_pRow[i].ReadTable();
+			CTableSerializer serializer;
+			serializer.Init(pLine);
+			m_pRow[i].MapData(serializer);
 		}
 		if (!__CheckTableID())
 		{
@@ -102,12 +105,24 @@ public:
 	}
 	int RowCount(){ return m_LineCount; }
 
+	int	 GetColumnIndex(const char* pColumnName)
+	{
+		for (UINT i=0;i<m_vRowName.size();++i)
+		{			
+			if (CTools::IsEqualString(m_vRowName[i], pColumnName))
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+
 private:
 	bool __CheckTableID()
 	{
 		for (int i=0;i<m_LineCount-1;i++)
 		{
-			if (m_pRow[i].m_ID>=m_pRow[i+1].m_ID)
+			if (m_pRow[i]>=m_pRow[i+1])
 			{
 				AssertEx(false, "File: %s; PrevLine: %d; NextLine: %d.", m_TableReader.GetFileFullPath(), i+1, i+2);
 				return false;
@@ -115,22 +130,25 @@ private:
 		}
 		return true;
 	}
-	inline void __SkipHeader()
+	inline void __ReadHeader()
 	{
-		for (int i=0;i<HEAD_LINE_COUINT;++i)
-		{
-			m_TableReader.GetLine();
-		}
+		m_vRowName.clear();
+		const char* pRowName = m_TableReader.GetLine();
+		CTools::SplitString(pRowName, m_vRowName, '\t');
+
+		const char* pRowType = m_TableReader.GetLine();
 	}
 private:
 	void __CleanUp()
 	{
 		m_pRow = NULL;		
 		m_LineCount = 0;
+		m_vRowName.clear();
 	}
 private:
 	T* m_pRow;	
 	int m_LineCount;
 	CTableReader m_TableReader;
+	MUL_STRING m_vRowName;
 };
 #endif

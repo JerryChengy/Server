@@ -112,9 +112,6 @@
     <ClInclude Include="..\Common\cw_tablereader.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\cw_tablebase.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="..\Common\cw_table.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -205,6 +202,18 @@
     <ClInclude Include="..\Lua\cw_luafunc.h">
       <Filter>Lua</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\cw_serializer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_tableserializer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_clearserializer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_fieldserializer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_packet.cpp">
@@ -277,9 +286,6 @@
       <Filter>TableDB</Filter>
     </ClCompile>
     <ClCompile Include="..\Common\cw_tablereader.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Common\cw_tablebase.cpp">
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="cw_tableset.cpp">
@@ -392,6 +398,15 @@
     </ClCompile>
     <ClCompile Include="..\Lua\cw_luatable.cpp">
       <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\cw_serializer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\cw_tableserializer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\cw_fieldserializer.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,6 @@
 #include "cw_luafunc.h"
+#include "cw_tableset.h"
+#include "cw_fieldserializer.h"
 
 bool Check_LuaTblParam(lua_State *L)
 {
@@ -9,10 +11,23 @@ bool Check_LuaTblParam(lua_State *L)
 	return true;
 }
 
-int Lua_GetTblData(lua_State *L)
+template<typename T>
+int Lua_GetTblData(CTable<T>& table, lua_State *L)
 {
-	int nTblId = lua_tonumber(L, 1);
-	const char* pRowName = lua_tostring(L, 2);
+	int nTblId = static_cast<int>(lua_tonumber(L, 1));
+	const char* pColumnName = lua_tostring(L, 2);
+	int iColumnIndex = table.GetColumnIndex(pColumnName);
+	CFieldSerializer fSerializer;
+	fSerializer.SetDesColumnIndex(iColumnIndex);
+	T* pRow = table.Row(nTblId);
+	if (!pRow)
+	{
+		return 0;
+	}
+	pRow->MapData(fSerializer);
+	int nResCount = 0;
+	fSerializer.PushLValue(L, nResCount);
+	return nResCount;
 }
 
 int Lua_GetTestTblData(lua_State *L)
@@ -21,6 +36,7 @@ int Lua_GetTestTblData(lua_State *L)
 	{
 		return 0;
 	}
-		
-	Tables.m_ScriptTbl
+	return Lua_GetTblData(Tables.m_Script, L);	
 }
+
+

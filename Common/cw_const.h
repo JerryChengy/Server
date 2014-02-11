@@ -20,7 +20,7 @@ const int BUFF_LEN_256  = 256;
 const int BUFF_LEN_128  = 128;
 const int BUFF_LEN_32 = 32;
 const int MAX_LINE_CHAR_COUNT = 1024;	//每行的最多字符个数
-const int MAX_BLOCK_CHAR_COUNT = 1024;  //每块的最多字符个数（块与块之间用TAB键隔开）
+const int MAX_BLOCK_CHAR_COUNT = MAX_LINE_CHAR_COUNT;  //每块的最多字符个数（块与块之间用TAB键隔开）
 const int HEAD_LINE_COUINT = 2;	   //表格文件中头行数（非有效数据行）
 
 #endif

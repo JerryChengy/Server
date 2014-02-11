@@ -1,34 +1,46 @@
 #ifndef CW_TABLESTRUCT_H
 #define CW_TABLESTRUCT_H
 #include "cw_commondefine.h"
-#include "cw_tablebase.h"
+#include "cw_clearserializer.h"
 
-
-struct TABLE_SCRIPT: TABLE_BASE 
+struct TABLE_SCRIPT
 {
+	int	  m_ID;
 	char* m_ScriptFileName;
-	void ReadTable()
+	void MapData(CSerializer& s)
 	{
-		In(m_ScriptFileName);		
+		s << m_ID;
+		s << m_ScriptFileName;
 	}
+	TABLE_SCRIPT(){ CClearSerializer s; MapData(s); }
+	bool operator>(int nID){ return m_ID > nID; }
+	bool operator<(int nID){ return m_ID < nID; }
+	bool operator==(int nID){ return m_ID == nID; }
+	bool operator>=(const TABLE_SCRIPT& val){ return m_ID == val.m_ID; }
 };
 
-struct TABLE_TEST: TABLE_BASE
+struct TABLE_TEST
 {	
+	int	  m_ID;
 	char* m_Name;
 	int  m_Level;
 	int  m_Hp;
 	float  m_Mp;
 	IntArray m_Title;
-	void ReadTable()
+	void MapData(CSerializer& s)
 	{
-		In(m_Name);
-		In(m_Level);
-		In(m_Hp);
-		In(m_Mp);
-		In(m_Title);	
+		s << m_ID;
+		s << m_Name;
+		s << m_Level;
+		s << m_Hp;
+		s << m_Mp;
+		s << m_Title;
 	}
-	
+	TABLE_TEST(){ CClearSerializer s; MapData(s); }
+	bool operator>(int nID){ return m_ID > nID; }
+	bool operator<(int nID){ return m_ID < nID; }
+	bool operator==(int nID){ return m_ID == nID; }
+	bool operator>=(const TABLE_TEST& val){ return m_ID >= val.m_ID; }
 };
 
 
