@@ -78,3 +78,8 @@ void CFieldSerializer::PushLValue( lua_State* L, int& nResCount)
 		break;
 	}
 }
+
+void CFieldSerializer::Skip()
+{
+	m_CurrentColumnIndex++;
+}

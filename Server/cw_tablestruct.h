@@ -14,7 +14,6 @@ struct TABLE_SCRIPT
 	}
 	TABLE_SCRIPT(){ CClearSerializer s; MapData(s); }
 	bool operator>(int nID){ return m_ID > nID; }
-	bool operator<(int nID){ return m_ID < nID; }
 	bool operator==(int nID){ return m_ID == nID; }
 	bool operator>=(const TABLE_SCRIPT& val){ return m_ID == val.m_ID; }
 };
@@ -29,8 +28,9 @@ struct TABLE_TEST
 	IntArray m_Title;
 	void MapData(CSerializer& s)
 	{
-		s << m_ID;
+		s << m_ID;		
 		s << m_Name;
+		//s.Skip();
 		s << m_Level;
 		s << m_Hp;
 		s << m_Mp;
@@ -38,7 +38,6 @@ struct TABLE_TEST
 	}
 	TABLE_TEST(){ CClearSerializer s; MapData(s); }
 	bool operator>(int nID){ return m_ID > nID; }
-	bool operator<(int nID){ return m_ID < nID; }
 	bool operator==(int nID){ return m_ID == nID; }
 	bool operator>=(const TABLE_TEST& val){ return m_ID >= val.m_ID; }
 };

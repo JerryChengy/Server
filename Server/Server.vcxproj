@@ -98,12 +98,14 @@
     <ClInclude Include="..\Common\cw_socketapi.h" />
     <ClInclude Include="..\Common\cw_socketbuff.h" />
     <ClInclude Include="..\Common\cw_socketdef.h" />
+    <ClInclude Include="..\Common\cw_stringhashtable.h" />
     <ClInclude Include="..\Common\cw_table.h" />
     <ClInclude Include="..\Common\cw_tablereader.h" />
     <ClInclude Include="..\Common\cw_tableserializer.h" />
     <ClInclude Include="..\Common\cw_testdata.h" />
     <ClInclude Include="..\Common\cw_time.h" />
     <ClInclude Include="..\Common\cw_tools.h" />
+    <ClInclude Include="..\Common\cw_hashlist.h" />
     <ClInclude Include="..\Lua\cw_luafunc.h" />
     <ClInclude Include="..\Lua\cw_luainterface.h" />
     <ClInclude Include="..\Lua\cw_scriptinterface.h" />

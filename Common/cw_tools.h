@@ -18,6 +18,9 @@ public:
 	static bool SplitString(const char* pSrc, MUL_INT& vecRes, char splitChar);
 
 	static bool IsEqualString(const char* pStr1, const char* pStr2);
+
+	static size_t ToPrime(const int Value);
+	
 protected:
 private:
 };

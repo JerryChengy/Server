@@ -11,6 +11,8 @@ public:
 	CTableSerializer& operator<<(float& val);
 	CTableSerializer& operator<<(IntArray& val);
 	CTableSerializer& operator<<(char*& val);
+
+	void Skip();
 protected:
 private:
 	CLineDataDisposer	m_LineDisposer;

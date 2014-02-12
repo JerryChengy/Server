@@ -18,6 +18,7 @@
 using namespace std;
 
 #pragma warning(disable: 4996)
+#pragma warning(disable: 4018)
 
 
 #define SAFE_DELETE(X) {delete X; X=0;}

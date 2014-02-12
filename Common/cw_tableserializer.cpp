@@ -8,6 +8,15 @@ void CTableSerializer::Init(const char* pStrData)
 	m_LineDisposer.Init(pStrData, '\t');
 }
 
+void CTableSerializer::Skip()
+{
+	const char* pData = m_LineDisposer.NextBlock();
+	if (!pData)
+	{
+		Assert(false);
+		return ;
+	}
+}
 CTableSerializer& CTableSerializer::operator<<(int& val)
 {
 	const char* pData = m_LineDisposer.NextBlock();

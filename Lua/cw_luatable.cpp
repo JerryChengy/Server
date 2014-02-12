@@ -36,7 +36,7 @@ int Lua_GetTestTblData(lua_State *L)
 	{
 		return 0;
 	}
-	return Lua_GetTblData(Tables.m_Script, L);	
+	return Lua_GetTblData(Tables.m_Test, L);	
 }
 
 

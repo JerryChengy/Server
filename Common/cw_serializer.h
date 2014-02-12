@@ -10,6 +10,7 @@ public:
 	virtual CSerializer& operator<<(float& val) = 0;
 	virtual CSerializer& operator<<(IntArray& val) = 0;
 	virtual CSerializer& operator<<(char*& val) = 0;
+	virtual void Skip() {};
 protected:
 private:
 };

@@ -82,7 +82,7 @@ bool Init()
 	TABLE_TEST* pTestTable = Tables.m_Test.Row(1);
 	if (pTestTable)
 	{
-		LOG_DEBUG("table test, nam: %s, level: %d, hp: %d, mp: %f, title: %d", pTestTable->m_Name,
+		LOG_DEBUG("table test, nam: , level: %d, hp: %d, mp: %f, title: %d", /*pTestTable->m_Name,*/
 			pTestTable->m_Level, pTestTable->m_Hp, 
 			pTestTable->m_Mp, pTestTable->m_Title[0]);
 

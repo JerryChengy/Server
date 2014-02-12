@@ -19,6 +19,8 @@ public:
 	void		SetDesColumnIndex(int nIndex){ m_DesColumnIndex = nIndex; }
 
 	void		PushLValue(lua_State* L, int& nResCount);
+
+	void		Skip();
 protected:
 private:
 	Table_Field			m_Field;

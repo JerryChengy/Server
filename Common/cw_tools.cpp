@@ -168,3 +168,18 @@ bool CTools::IsEqualString( const char* pStr1, const char* pStr2 )
 	}
 	return false;
 }
+
+
+size_t CTools::ToPrime( const int Value )
+{
+	static size_t Primes[] = {
+		127, 251, 509, 1021, 2039, 4093, 8191, 16381, 32749, 65521, 131071,
+		262139, 524287, 1048573, 2097143, 4194301, 8388593, 16777213, 33554393,
+		67108859, 134217689, 268435399, 536870909, 1073741789, 2147483647
+	};
+	for (int i = 0; i < sizeof(Primes)/sizeof(size_t); i++) {
+		size_t Result = Primes[i];
+		if (Value <= Result) return Result;
+	}
+	return (Value + Value / 2) | 1;
+}

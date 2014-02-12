@@ -214,6 +214,12 @@
     <ClInclude Include="..\Common\cw_fieldserializer.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\cw_stringhashtable.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_hashlist.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_packet.cpp">

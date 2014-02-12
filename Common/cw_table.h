@@ -10,10 +10,14 @@
 #include "cw_luainterface.h"
 #include "cw_tableserializer.h"
 #include "cw_tools.h"
+#include "cw_hashlist.h"
+#include "cw_log.h"
 
 template<class T>
 class CTable
 {
+public:
+	CTable(): m_ColumnInfo(5000){};
 public:
 	void Print()
 	{
@@ -42,7 +46,7 @@ public:
 			{
 				nUpIndex = nIndex-1;
 			}
-			else if (m_pRow[nIndex] < nID)
+			else if (!(m_pRow[nIndex] > nID))
 			{
 				nDownIndex = nIndex+1;
 			}
@@ -106,15 +110,12 @@ public:
 	int RowCount(){ return m_LineCount; }
 
 	int	 GetColumnIndex(const char* pColumnName)
-	{
-		for (UINT i=0;i<m_vRowName.size();++i)
-		{			
-			if (CTools::IsEqualString(m_vRowName[i], pColumnName))
-			{
-				return i;
-			}
+	{		
+		if (!m_ColumnInfo.Find(pColumnName))
+		{
+			return -1;
 		}
-		return -1;
+		return m_ColumnInfo[pColumnName];		
 	}
 
 private:
@@ -132,23 +133,27 @@ private:
 	}
 	inline void __ReadHeader()
 	{
-		m_vRowName.clear();
-		const char* pRowName = m_TableReader.GetLine();
-		CTools::SplitString(pRowName, m_vRowName, '\t');
-
-		const char* pRowType = m_TableReader.GetLine();
+		m_ColumnInfo.clear();
+		std::vector<string> vColumnName;
+		vColumnName.clear();
+		const char* pColumnName = m_TableReader.GetLine();
+		CTools::SplitString(pColumnName, vColumnName, '\t');
+		for (UINT i=0;i<vColumnName.size();++i)
+		{
+			m_ColumnInfo[vColumnName[i]] = i;
+		}		
+		m_TableReader.GetLine();
 	}
 private:
 	void __CleanUp()
 	{
 		m_pRow = NULL;		
 		m_LineCount = 0;
-		m_vRowName.clear();
 	}
 private:
 	T* m_pRow;	
 	int m_LineCount;
 	CTableReader m_TableReader;
-	MUL_STRING m_vRowName;
+	IntHashList	m_ColumnInfo;
 };
 #endif
