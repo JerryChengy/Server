@@ -11,11 +11,10 @@
 #include "cw_serveriniset.h"
 #include "cw_tableset.h"
 #include "cw_scriptinterface.h"
+#include "cw_tools.h"
 
 bool Init()
 {
-	
-	
 	new CTimeManager;
 	new CLogManager;
 	new CServerIniSet;
@@ -69,7 +68,7 @@ bool Init()
 		LOG_DEBUG("iRet: %d", iRet);
 	//iRet = SCRIPTMANAGER.CallScript(2, "mul", 4, 3);
 	//LOG_DEBUG("iRet: %d", iRet);
-
+	
 
 	bRet = CSocketServer::GetSingleton().Listen();
 	if (!bRet)

@@ -537,16 +537,18 @@ template <typename _Tp>
 size_t THashList<_Tp>::HashKey(const string& Key) const
 {
     int size = Key.size();
-    const char* buf = reinterpret_cast<const char*>(Key.data());
-    size_t Result = 2166136261U;
-    for (int i = 0; i < size; i++) {
-        //Result = 31 * (Result + buf[i]);
-        //Result = 33 * (Result + buf[i]);
-        //Result = (16777619 * Result) + buf[i];
-        //Result = 16777619 * (Result ^ static_cast<size_t>(buf[i]));
-        Result = 16777619 * (Result + static_cast<size_t>(buf[i]));
-    }
-    return Result;
+	return CTools::hash(Key.c_str(), Key.size());
+
+	//const char* buf = reinterpret_cast<const char*>(Key.data());
+	//size_t Result = 2166136261U;
+	//for (int i = 0; i < size; i++) {
+	//    //Result = 31 * (Result + buf[i]);
+	//    //Result = 33 * (Result + buf[i]);
+	//    //Result = (16777619 * Result) + buf[i];
+	//    //Result = 16777619 * (Result ^ static_cast<size_t>(buf[i]));
+	//    Result = 16777619 * (Result + static_cast<size_t>(buf[i]));
+	//}
+	//return Result;
 }
 
 template <typename _Tp>

@@ -183,3 +183,29 @@ size_t CTools::ToPrime( const int Value )
 	}
 	return (Value + Value / 2) | 1;
 }
+
+float CTools::CarmSqrt(float x)
+{
+	union{
+		int intPart;
+		float floatPart;
+	} convertor;
+	union{
+		int intPart;
+		float floatPart;
+	} convertor2;
+	convertor.floatPart = x;
+	convertor2.floatPart = x;
+	convertor.intPart = 0x1FBCF800 + (convertor.intPart >> 1);
+	convertor2.intPart = 0x5f3759df - (convertor2.intPart >> 1);
+	return 0.5f*(convertor.floatPart + (x * convertor2.floatPart));
+}
+
+unsigned long CTools::hash(const char *name,size_t len)
+{
+	unsigned long h=(unsigned long)len;
+	size_t step = (len>>5)+1;
+	for (size_t i=len; i>=step; i-=step)
+		h = h ^ ((h<<5)+(h>>2)+(unsigned long)name[i-1]);
+	return h;
+}
