@@ -12,6 +12,9 @@
 #include "cw_tableset.h"
 #include "cw_scriptinterface.h"
 #include "cw_tools.h"
+#include "cw_player.h"
+
+CPlayer* g_Player = 0;
 
 bool Init()
 {
@@ -64,8 +67,10 @@ bool Init()
 	{
 		return false;
 	}
-	int iRet = SCRIPTMANAGER.CallScript(2, "mul", 1.325, 3.64);
-		LOG_DEBUG("iRet: %d", iRet);
+	g_Player = new CPlayer;
+	g_Player->SetLevel(88);
+	int iRet = SCRIPTMANAGER.CallScript(2, "Test", 34, 0);
+	LOG_DEBUG("iRet: %d", iRet);
 	//iRet = SCRIPTMANAGER.CallScript(2, "mul", 4, 3);
 	//LOG_DEBUG("iRet: %d", iRet);
 	

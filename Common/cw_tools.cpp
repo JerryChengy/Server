@@ -170,7 +170,7 @@ bool CTools::IsEqualString( const char* pStr1, const char* pStr2 )
 }
 
 
-size_t CTools::ToPrime( const int Value )
+size_t CTools::ToPrimeForHashList( const int Value )
 {
 	static size_t Primes[] = {
 		127, 251, 509, 1021, 2039, 4093, 8191, 16381, 32749, 65521, 131071,
@@ -208,4 +208,70 @@ unsigned long CTools::hash(const char *name,size_t len)
 	for (size_t i=len; i>=step; i-=step)
 		h = h ^ ((h<<5)+(h>>2)+(unsigned long)name[i-1]);
 	return h;
+}
+
+int int2fb (unsigned int x) {
+	int e = 0;  /* expoent */
+	while (x >= 16) {
+		x = (x+1) >> 1;
+		e++;
+	}
+	if (x < 8) return x;
+	else return ((e+1) << 3) | ((int)x - 8);
+}
+
+int fb2int (int x) {
+	int e = (x >> 3) & 31;
+	if (e == 0) return x;
+	else return ((x & 7)+8) << (e - 1);
+}
+
+int log2 (unsigned int x) {
+	static const unsigned char log_3[256] = {
+		0,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+		6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
+		7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+		7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+		8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+		8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+		8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+		8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+	};
+	int l = -1;
+	while (x >= 256) { l += 8; x >>= 8; }
+	return l + log_3[x];
+
+}
+void chunkid (char *out, const char *source, size_t bufflen) {
+	if (*source == '=') {
+		strncpy(out, source+1, bufflen);  /* remove first char */
+		out[bufflen-1] = '\0';  /* ensures null termination */
+	}
+	else {  /* out = "source", or "...source" */
+		if (*source == '@') {
+			size_t l;
+			source++;  /* skip the `@' */
+			bufflen -= sizeof(" '...' ");
+			l = strlen(source);
+			strcpy(out, "");
+			if (l > bufflen) {
+				source += (l-bufflen);  /* get last part of file name */
+				strcat(out, "...");
+			}
+			strcat(out, source);
+		}
+		else {  /* out = [string "string"] */
+			size_t len = strcspn(source, "\n\r");  /* stop at first newline */
+			bufflen -= sizeof(" [string \"...\"] ");
+			if (len > bufflen) len = bufflen;
+			strcpy(out, "[string \"");
+			if (source[len] != '\0') {  /* must truncate? */
+				strncat(out, source, len);
+				strcat(out, "...");
+			}
+			else
+				strcat(out, source);
+			strcat(out, "\"]");
+		}
+	}
 }

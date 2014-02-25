@@ -265,7 +265,7 @@ const int RESERVED_BUCKET_SIZE = 64;
 
 template <typename _Tp>
 THashList<_Tp>::THashList(size_t HashSize, size_t LimitCount)
-    :   FHashSize(CTools::ToPrime(HashSize)),
+    :   FHashSize(CTools::ToPrimeForHashList(HashSize)),
         FLimitCount(LimitCount)
 {
     FList = new PBucket[FHashSize];
@@ -667,7 +667,7 @@ void THashList<_Tp>::RemoveUseless()
 template <typename _Tp>
 bool THashList<_Tp>::Resize(size_t HashSize)
 {
-    HashSize = CTools::ToPrime(HashSize);
+    HashSize = CTools::ToPrimeForHashList(HashSize);
     if (HashSize == FHashSize) return false;
 
     ZBucket XList = FList;

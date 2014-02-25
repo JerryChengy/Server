@@ -50,7 +50,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\;..\Common;..\Packets;..\Lua;..\Lua\SrcCode</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\Common;..\Packets;..\Player;..\Lua;..\Lua\SrcCode</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -183,6 +183,7 @@
     </ClInclude>
     <ClInclude Include="..\Packets\cw_cspackettest.h" />
     <ClInclude Include="..\Packets\cw_scpackettest.h" />
+    <ClInclude Include="..\Player\cw_player.h" />
     <ClInclude Include="cw_connectionmanager.h" />
     <ClInclude Include="cw_serveriniset.h" />
     <ClInclude Include="cw_serverstructini.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="..\Common\cw_tableserializer.cpp" />
     <ClCompile Include="..\Common\cw_time.cpp" />
     <ClCompile Include="..\Common\cw_tools.cpp" />
+    <ClCompile Include="..\LuaLib\cw_luaplayer.cpp" />
     <ClCompile Include="..\Lua\cw_luafuncregister.cpp" />
     <ClCompile Include="..\Lua\cw_luainterface.cpp" />
     <ClCompile Include="..\Lua\cw_luatable.cpp" />

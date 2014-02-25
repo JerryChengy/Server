@@ -22,6 +22,7 @@ using namespace std;
 
 
 #define SAFE_DELETE(X) {delete X; X=0;}
+#define SAFE_DELETEARRAY(X){ delete X[]; X = 0;}
 typedef vector<string> MUL_STRING;
 typedef vector<int>	MUL_INT;
 typedef unsigned int		UINT;

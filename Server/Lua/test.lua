@@ -1,9 +1,14 @@
-function x000001_sum(add1, add2)
-	local res = GetTblData();
-	--print(res)
-	
-	return res;
+module "Counter"
+function MakeCounter ()
+	local t = 0
+	return function ()
+		t = t + 4
+	return t
+	end
 end
 
-width = 9;
-height = 4;
+function x000002_GetCounter()
+	local x = MakeCounter ();
+	return x();
+	--print (222)
+end

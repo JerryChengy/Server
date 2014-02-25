@@ -27,6 +27,7 @@ bool CLuaInterface::Init()
 	}
 	luaL_openlibs(m_pState);
 	RegisterLuaFunc();
+	RegisterAllTable(m_pState);
 	return true;
 }
 

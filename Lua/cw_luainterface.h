@@ -17,11 +17,14 @@ public:
 	bool Init();
 	bool Load(const char* pFileName);
 	int CallScript(char* szFuncName, const char* szFormat, ...);
+	void RegisterTable();
 protected:
 public:
 	lua_State* m_pState;
+
 };
 
+void RegisterAllTable(lua_State* L);
 void RegisterLuaFunc();
 
 

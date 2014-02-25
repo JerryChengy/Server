@@ -26,6 +26,9 @@
     <Filter Include="Lua\SrcCode">
       <UniqueIdentifier>{299a3775-50d9-45bb-a8ac-20554d6ec8ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{518acf93-4ffb-4f21-8790-68e908b97bfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\cw_singleton.h">
@@ -220,6 +223,9 @@
     <ClInclude Include="..\Common\cw_hashlist.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\Player\cw_player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_packet.cpp">
@@ -413,6 +419,9 @@
     </ClCompile>
     <ClCompile Include="..\Common\cw_fieldserializer.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LuaLib\cw_luaplayer.cpp">
+      <Filter>Lua</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
