@@ -62,6 +62,7 @@ int CLuaInterface::CallScript(char* szFuncName, const char* szFormat, ...)
 	int nArg = 0;
 	char* pString = 0;
 	double dArg = 0.0f;
+	void* pData = 0;
 	lua_getglobal(m_pState,szFuncName); 
 	va_list args;
 	va_start(args, szFormat);
@@ -83,6 +84,10 @@ int CLuaInterface::CallScript(char* szFuncName, const char* szFormat, ...)
 		case 's':
 			pString = va_arg(args, char*);
 			lua_pushstring(m_pState, pString);			
+			break;
+		case 'p':
+			pData = va_arg(args, void*);
+			lua_pushlightuserdata(m_pState, pData);
 			break;
 		default:
 			bRet = false;

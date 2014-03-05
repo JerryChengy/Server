@@ -13,8 +13,10 @@
 #include "cw_scriptinterface.h"
 #include "cw_tools.h"
 #include "cw_player.h"
+#include "cw_testdata.h"
 
 CPlayer* g_Player = 0;
+
 
 bool Init()
 {

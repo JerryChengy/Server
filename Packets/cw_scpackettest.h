@@ -31,7 +31,7 @@ public:
 protected:
 private:
 	int			m_Num;
-	char		m_Str[1024];
+	char		m_Str[32];
 	HumanData	m_HumanData;
 };
 

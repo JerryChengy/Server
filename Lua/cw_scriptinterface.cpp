@@ -35,6 +35,30 @@ bool CScriptInterface::Load()
 	return true;
 }
 
+int CScriptInterface::CallScript( int iScriptID, const char* pFuncName, int iArg1, int iArg2, int iArg3 )
+{
+	char szFuncName[64] = {};
+	_snprintf_s(szFuncName, sizeof(szFuncName)-1, "x%06d_%s", iScriptID, pFuncName);
+	return CLuaInterface::GetSingleton().CallScript(szFuncName, "iii", iArg1, iArg2, iArg3);
+}
+int CScriptInterface::CallScript( int iScriptID, const char* pFuncName, int iArg1 )
+{
+	char szFuncName[64] = {};
+	_snprintf_s(szFuncName, sizeof(szFuncName)-1, "x%06d_%s", iScriptID, pFuncName);
+	return CLuaInterface::GetSingleton().CallScript(szFuncName, "i", iArg1);
+}
+int CScriptInterface::CallScript( int iScriptID, const char* pFuncName, int iArg1, const char* szArg2 )
+{
+	char szFuncName[64] = {};
+	_snprintf_s(szFuncName, sizeof(szFuncName)-1, "x%06d_%s", iScriptID, pFuncName);
+	return CLuaInterface::GetSingleton().CallScript(szFuncName, "is", iArg1, szArg2);
+}
+int CScriptInterface::CallScript( int iScriptID, const char* pFuncName, int iArg1, void* pArg2 )
+{
+	char szFuncName[64] = {};
+	_snprintf_s(szFuncName, sizeof(szFuncName)-1, "x%06d_%s", iScriptID, pFuncName);
+	return CLuaInterface::GetSingleton().CallScript(szFuncName, "ip", iArg1, pArg2);
+}
 int CScriptInterface::CallScript( int iScriptID, const char* pFuncName, int iArg1, int iArg2 )
 {
 	char szFuncName[64] = {};

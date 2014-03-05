@@ -15,6 +15,8 @@ public:
 
 	void				DelConn( SOCKET socket );
 
+	CConnection*		GetConn(SOCKET socket);
+
 	int					GetMaxConns(){ return m_MaxConns; }
 
 	void				ProcessNetData();

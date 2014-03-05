@@ -17,4 +17,14 @@ struct HumanData
 	}
 	HumanData(){ CleanUp(); }
 };
+struct PacketHumanData 
+{
+	int		m_Size;
+	HumanData	m_Data;
+	void	CleanUp()
+	{
+		m_Size = sizeof(HumanData);
+	}
+	PacketHumanData(){ CleanUp(); }
+};
 #endif

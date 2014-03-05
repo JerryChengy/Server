@@ -6,6 +6,7 @@
 #include "cw_packetfactorymanager.h"
 #include "cw_handlerset.h"
 #include "cw_packet.h"
+#include "cw_scriptinterface.h"
 
 SINGLETONG_IMPLEMENTION(CSocketServer)
 
@@ -51,41 +52,46 @@ void ProcessInput(CConnection* pConn)
 			pSocketBuff->EndParse();
 			break;
 		}
-		if (iPacketID < 0 || iPacketID >= EM_PACKET_TYPE_NUMBER)	//异常，断开连接
+		int nRet = SCRIPTMANAGER.CallScript(3, "ProcessPacket", pConn->GetSocket(), iPacketID);
+		if (nRet == 0)
 		{
-			CConnectionManager::GetSingleton().DelConn(pConn->GetSocket());
-			LOG_DEBUG("Invalid Packet id: %d", iPacketID);
 			break;
 		}
+		//if (iPacketID < 0 || iPacketID >= EM_PACKET_TYPE_NUMBER)	//异常，断开连接
+		//{
+		//	CConnectionManager::GetSingleton().DelConn(pConn->GetSocket());
+		//	LOG_DEBUG("Invalid Packet id: %d", iPacketID);
+		//	break;
+		//}
 
-		CPacket* pPacket = CPacketFactoryManager::GetSingleton().GeneratePacket(iPacketID);
-		if (!pPacket)
-		{
-			CConnectionManager::GetSingleton().DelConn(pConn->GetSocket());
-			LOG_DEBUG("Not CSPacket id: %d", iPacketID);
-			break;
-		}
-		pPacket->SetIsSend(false);
-		pPacket->SetBuff(pSocketBuff);
-		bRet = pPacket->MapData();
-		if (!bRet)
-		{
-			LOG_DEBUG("pPacket Recover!");
-			pSocketBuff->Recover();
-			pSocketBuff->EndParse();
-			break;
-		}
-		pSocketBuff->EndParse();	
-		FuncHandler pHandler = CPacketHandlerSet::GetSingleton().GetHandler(iPacketID);
-		if (pHandler)
-		{
-			int nRet = (*pHandler)(pPacket, pConn);
-		}
-		else
-		{
-			LOG_DEBUG("Packet has no handler, id: %d", iPacketID);
-			break;
-		}
+		//CPacket* pPacket = CPacketFactoryManager::GetSingleton().GeneratePacket(iPacketID);
+		//if (!pPacket)
+		//{
+		//	CConnectionManager::GetSingleton().DelConn(pConn->GetSocket());
+		//	LOG_DEBUG("Not CSPacket id: %d", iPacketID);
+		//	break;
+		//}
+		//pPacket->SetIsSend(false);
+		//pPacket->SetBuff(pSocketBuff);
+		//bRet = pPacket->MapData();
+		//if (!bRet)
+		//{
+		//	LOG_DEBUG("pPacket Recover!");
+		//	pSocketBuff->Recover();
+		//	pSocketBuff->EndParse();
+		//	break;
+		//}
+		//pSocketBuff->EndParse();	
+		//FuncHandler pHandler = CPacketHandlerSet::GetSingleton().GetHandler(iPacketID);
+		//if (pHandler)
+		//{
+		//	int nRet = (*pHandler)(pPacket, pConn);
+		//}
+		//else
+		//{
+		//	LOG_DEBUG("Packet has no handler, id: %d", iPacketID);
+		//	break;
+		//}
 	}
 
 }

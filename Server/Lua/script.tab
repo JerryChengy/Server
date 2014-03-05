@@ -1,4 +1,5 @@
-ID	Ãû³Æ
+ID	ï¿½ï¿½ï¿½
 INT	STRING
 1	./Lua/test.lua
 2	./Lua/test1.lua
+3	./Lua/packet.lua

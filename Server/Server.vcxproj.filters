@@ -226,6 +226,9 @@
     <ClInclude Include="..\Player\cw_player.h">
       <Filter>Player</Filter>
     </ClInclude>
+    <ClInclude Include="..\LuaLib\cw_luapacket.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_packet.cpp">
@@ -421,6 +424,12 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="..\LuaLib\cw_luaplayer.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LuaLib\cw_luanet.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LuaLib\cw_luapacket.cpp">
       <Filter>Lua</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,7 +10,6 @@ void CTools::Strcpy( char* pDes, const char* pSrc, int iLen )
 	}
 	strncpy(pDes, pSrc, iLen);
 }
-
 bool CTools::StringToInt( const char* pBuf, int &nRes )
 {
 	if (!pBuf)

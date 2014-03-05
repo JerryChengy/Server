@@ -9,7 +9,7 @@ SINGLETONG_IMPLEMENTION(CCSTestPacketFactory)
 	BEGINPEEKBUF	
 	PEEKBUF(m_Num);
 	PEEKBUF(m_Str);
-	PEEKBUF(m_HumanData);
+	//PEEKBUF(m_HumanData);
 	ENDPEEKBUF
 }
 

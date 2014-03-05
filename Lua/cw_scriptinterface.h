@@ -12,6 +12,10 @@ public:
 
 	int					CallScript(int iScriptID, const char* pFuncName, int iArg1, int iArg2);
 	int					CallScript( int iScriptID, const char* pFuncName, double dArg1, double dArg2 );
+	int					CallScript( int iScriptID, const char* pFuncName, int iArg1, int iArg2, int iArg3 );
+	int					CallScript( int iScriptID, const char* pFuncName, int iArg1, const char* szArg2 );
+	int					CallScript( int iScriptID, const char* pFuncName, int iArg1,  void* pArg2 );
+	int					CallScript( int iScriptID, const char* pFuncName, int iArg1 );
 protected:
 private:
 	

@@ -14,6 +14,7 @@ void RegisterLuaFunc()
 void RegisterAllTable(lua_State* L)
 {
 	luaopen_player(L);
+	luaopen_net(L);
 }
 //×¢²á±íÄÚº¯Êý
 void RegisterLuaTbl(lua_State* L, const char* pTblName, const char* pSectionName, lua_CFunction func)

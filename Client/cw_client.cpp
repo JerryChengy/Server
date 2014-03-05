@@ -38,7 +38,7 @@ void Work()
 		packet.SetHumanData(humanData);
 		SendPacket(&packet);
 		CServerConnection::GetSingleton().ProcessNetData();
-		::Sleep(10);
+		::Sleep(100);
 	}	
 }
 bool Init()

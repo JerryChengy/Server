@@ -123,3 +123,15 @@ void CConnectionManager::ProcessNetData()
 	}     
 }
 
+CConnection* CConnectionManager::GetConn( SOCKET socket )
+{
+	for (int i = 0; i < m_ConnCount; ++i)
+	{
+		if (m_ConnectionSet[i].GetSocket() == socket)
+		{
+			return &m_ConnectionSet[i];
+		}
+	}
+	return 0;
+}
+
