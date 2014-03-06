@@ -27,6 +27,13 @@ typedef vector<string> MUL_STRING;
 typedef vector<int>	MUL_INT;
 typedef unsigned int		UINT;
 
+#if defined (_WIN32_)
+	typedef void*	SM_Handle;
+	typedef unsigned int SM_KEY;
+#elif defined (_LINUX64_)
+	typedef int		SM_Handle;
+	typedef key_t   SM_KEY;
+#endif
 struct IntArray 
 {
 	IntArray()

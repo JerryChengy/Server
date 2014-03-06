@@ -93,9 +93,13 @@ int Lua_GetSocketRecvBuff(lua_State *L)
 
 int Lua_MapBuff(lua_State *L)
 {
+	if (!lua_isuserdata(L, 1) || !lua_isstring(L, 2))
+	{
+		return 0;
+	}
 	CSocketBuff* pBuff = static_cast<CSocketBuff*>(lua_touserdata(L, 1));
 	const char* strVarType = lua_tostring(L, 2);	
-	if (strcmp(strVarType, "INT") == 0)
+	if (CTools::Strcmp(strVarType, "INT") == 0)
 	{
 		int iRet = 0;
 		bool bRet = pBuff->PeekBuff((char*)(void *)&iRet, sizeof(iRet));
@@ -107,7 +111,31 @@ int Lua_MapBuff(lua_State *L)
 		lua_pushnumber(L, iRet);
 		return 2;
 	}
-	else if (strcmp(strVarType, "STRING") == 0)
+	if (CTools::Strcmp(strVarType, "FLOAT") == 0)
+	{
+		float fRet = 0;
+		bool bRet = pBuff->PeekBuff((char*)(void *)&fRet, sizeof(fRet));
+		if (!bRet)
+		{
+			return 0;
+		}
+		lua_pushnumber(L, 1);
+		lua_pushnumber(L, fRet);
+		return 2;
+	}
+	if (CTools::Strcmp(strVarType, "SHORT") == 0)
+	{
+		short sRet = 0;
+		bool bRet = pBuff->PeekBuff((char*)(void *)&sRet, sizeof(sRet));
+		if (!bRet)
+		{
+			return 0;
+		}
+		lua_pushnumber(L, 1);
+		lua_pushnumber(L, sRet);
+		return 2;
+	}
+	else if (CTools::Strcmp(strVarType, "STRING") == 0)
 	{
 		short	iStrLen = 0;
 		bool bRet = pBuff->PeekBuff((char*)(void *)&iStrLen, sizeof(iStrLen));
@@ -167,7 +195,7 @@ int Lua_FillBuff(lua_State *L)
 {
 	CSocketBuff* pBuff = static_cast<CSocketBuff*>(lua_touserdata(L, 1));
 	const char* strVarType = lua_tostring(L, 2);	
-	if (strcmp(strVarType, "INT") == 0)
+	if (CTools::Strcmp(strVarType, "INT") == 0)
 	{
 		if (!lua_isnumber(L, 3))
 		{
@@ -176,7 +204,25 @@ int Lua_FillBuff(lua_State *L)
 		int iData = (int)lua_tonumber(L, 3);
 		pBuff->Fill((char*)(void *)&iData, sizeof(iData));
 	}
-	else if (strcmp(strVarType, "STRING") == 0)
+	else if (CTools::Strcmp(strVarType, "FLOAT") == 0)
+	{
+		if (!lua_isnumber(L, 3))
+		{
+			return 0;
+		}
+		float fData = (float)lua_tonumber(L, 3);
+		pBuff->Fill((char*)(void *)&fData, sizeof(fData));
+	}
+	else if (CTools::Strcmp(strVarType, "SHORT") == 0)
+	{
+		if (!lua_isnumber(L, 3))
+		{
+			return 0;
+		}
+		short sData = (short)lua_tonumber(L, 3);
+		pBuff->Fill((char*)(void *)&sData, sizeof(sData));
+	}
+	else if (CTools::Strcmp(strVarType, "STRING") == 0)
 	{
 		if (!lua_isstring(L, 3))
 		{

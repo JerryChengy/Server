@@ -29,5 +29,14 @@ struct INI_SERVERNET:INI_BASE
 	}
 };
 
-
+struct INI_SHM:INI_BASE 
+{
+	int m_Key;
+	int m_Size;
+	void ReadData()
+	{
+		Read("key", m_Key);
+		Read("size", m_Size);
+	}
+};
 #endif

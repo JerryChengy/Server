@@ -2,6 +2,25 @@
 #include "cw_tools.h"
 #include "cw_assert.h"
 
+
+int CTools::Strcmp(const char* pStr1, const char* pStr2)
+{
+	if (!pStr1)
+	{
+		Assert(false);
+		if (!pStr2)
+		{
+			return 0;
+		}
+		return -1;
+	}
+	if (!pStr2)
+	{
+		Assert(false);
+		return 1;
+	}
+	return strcmp(pStr1, pStr2);
+}
 void CTools::Strcpy( char* pDes, const char* pSrc, int iLen )
 {
 	if (!pDes || !pSrc)

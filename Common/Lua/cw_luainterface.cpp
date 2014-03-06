@@ -1,7 +1,7 @@
 #include "cw_luainterface.h"
 #include "cw_assert.h"
 #include "cw_tools.h"
-
+#include "cw_luaenum.h"
 extern "C"
 {	
 #include "lua.h"
@@ -25,9 +25,12 @@ bool CLuaInterface::Init()
 	{
 		return false;
 	}
+	new CScriptEnum;
+	CScriptEnum::GetSingleton().Init(m_pState);
 	luaL_openlibs(m_pState);
 	RegisterLuaFunc();
 	RegisterAllTable(m_pState);
+	CScriptEnum::GetSingleton().RegisterAll();
 	return true;
 }
 

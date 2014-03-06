@@ -63,6 +63,8 @@ bool Init()
 	{
 		return false;
 	}
+	int iRet = SCRIPTMANAGER.CallScript(2, "Test", 34, 0);
+	LOG_DEBUG("iRet: %d", iRet);
 	LOG_DEBUG("Init OK!");
 	LOG_DEBUG("Listen...");
 	return true;

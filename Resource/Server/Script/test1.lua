@@ -209,10 +209,7 @@ function player:sethp(hp)
 	self.hp = hp;
 end
 function x000002_Test(...)
-	player:sethp(2000)
-	print(player.hp)
-	
-	print(GetTestTblData(2, "MP"))
+	print("enum: "..EM_PACKET_TYPE.SCMONSTER)
 	--local typeinfo = assert(TestTable[3], "test")
 	--print(typeinfo[1])
 	--print(TestTable:key)

@@ -24,7 +24,7 @@ public:
 	//一个方便的 hash 函数应该散列的比较开，计算速度跟字符串长度关系不大，又不能只计算字符串的开头或末尾。
 	//这里的算法是从 Lua 中看来的。
 	static unsigned long hash(const char *name,size_t len);
-
+	static int Strcmp(const char* pStr1, const char* pStr2);
 
 protected:
 private:

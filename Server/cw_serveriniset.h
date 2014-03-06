@@ -15,6 +15,7 @@ private:
 public:
 	INI_TEST m_Test;
 	INI_SERVERNET m_ServerNet;
+	INI_SHM	m_Shm;
 	
 };
 

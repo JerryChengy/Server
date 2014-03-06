@@ -50,7 +50,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_SERVER_;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_SERVER_;_WIN32_;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\;..\Common;..\Common\Packets;.\Player;.\Lua;..\Common\Lua;..\Common\Lua\SrcCode</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -108,6 +108,7 @@
     <ClInclude Include="..\Common\cw_time.h" />
     <ClInclude Include="..\Common\cw_tools.h" />
     <ClInclude Include="..\Common\cw_hashlist.h" />
+    <ClInclude Include="..\Common\Lua\cw_luaenum.h" />
     <ClInclude Include="..\Common\Lua\cw_luainterface.h" />
     <ClInclude Include="..\Common\Lua\cw_luanet.h" />
     <ClInclude Include="..\Common\Lua\cw_luapacket.h" />
@@ -187,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="..\Common\Packets\cw_csmonster.h" />
     <ClInclude Include="..\Common\Packets\cw_scmonster.h" />
+    <ClInclude Include="..\Common\Shm\cw_sharememoryapi.h" />
+    <ClInclude Include="..\Common\Shm\cw_SHMDefine.h" />
+    <ClInclude Include="..\Common\Shm\cw_shmpool.h" />
     <ClInclude Include="cw_connectionmanager.h" />
     <ClInclude Include="cw_serveriniset.h" />
     <ClInclude Include="cw_serverstructini.h" />
@@ -215,6 +219,7 @@
     <ClCompile Include="..\Common\cw_tableserializer.cpp" />
     <ClCompile Include="..\Common\cw_time.cpp" />
     <ClCompile Include="..\Common\cw_tools.cpp" />
+    <ClCompile Include="..\Common\Lua\cw_luaenum.cpp" />
     <ClCompile Include="..\Common\Lua\cw_luainterface.cpp" />
     <ClCompile Include="..\Common\Lua\cw_luanet.cpp" />
     <ClCompile Include="..\Common\Lua\cw_luapacket.cpp" />
@@ -318,6 +323,7 @@
     </ClCompile>
     <ClCompile Include="..\Common\Packets\cw_csmonster.cpp" />
     <ClCompile Include="..\Common\Packets\cw_scmonster.cpp" />
+    <ClCompile Include="..\Common\Shm\cw_sharememoryapi.cpp" />
     <ClCompile Include="cw_connectionmanager.cpp" />
     <ClCompile Include="cw_serverhandler.h" />
     <ClCompile Include="cw_serverhandlerset.cpp" />
@@ -326,6 +332,7 @@
     <ClCompile Include="cw_csmonsterpackethandler.cpp" />
     <ClCompile Include="cw_server.cpp" />
     <ClCompile Include="cw_tableset.cpp" />
+    <ClCompile Include="Lua\cw_enumregister.cpp" />
     <ClCompile Include="Lua\cw_luafuncregister.cpp" />
     <ClCompile Include="Lua\cw_luatable.cpp" />
     <ClCompile Include="Player\cw_luaplayer.cpp" />

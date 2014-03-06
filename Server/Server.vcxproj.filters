@@ -32,6 +32,9 @@
     <Filter Include="Common\Lua\SrcCode">
       <UniqueIdentifier>{299a3775-50d9-45bb-a8ac-20554d6ec8ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\Shm">
+      <UniqueIdentifier>{5563dc48-1789-452b-88d7-8debf1a46a89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\cw_singleton.h">
@@ -241,6 +244,18 @@
     <ClInclude Include="..\Common\Packets\cw_scmonster.h">
       <Filter>Packets</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_sharememoryapi.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_SHMDefine.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_shmpool.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\cw_luaenum.h">
+      <Filter>Common\Lua</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_packet.cpp">
@@ -446,6 +461,15 @@
     </ClCompile>
     <ClCompile Include="..\Common\Packets\cw_scmonster.cpp">
       <Filter>Packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Shm\cw_sharememoryapi.cpp">
+      <Filter>Common\Shm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\cw_luaenum.cpp">
+      <Filter>Common\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua\cw_enumregister.cpp">
+      <Filter>Lua</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
