@@ -3,5 +3,5 @@
 
 void CPacketHandlerSet::Init()
 {
-	REG_HANDLER(EM_PACKET_TYPE_SCTEST, &SCTestPacketHandler);
+	REG_HANDLER(EM_PACKET_TYPE_SCMONSTER, &SCMonsterPacketHandler);
 }

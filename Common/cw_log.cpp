@@ -43,7 +43,7 @@ void CLogManager::_TickNewFold()
 {
 	const tm& Time = CTimeManager::GetSingleton().GetThisTime();
 	memset(m_CurrentPath, 0, sizeof(m_CurrentPath));
-	_snprintf_s(m_CurrentPath, sizeof(m_CurrentPath)-1, "./Log/%04d-%02d-%02d", Time.tm_year, Time.tm_mon, Time.tm_mday);
+	_snprintf_s(m_CurrentPath, sizeof(m_CurrentPath)-1, "../Log/%04d-%02d-%02d", Time.tm_year, Time.tm_mon, Time.tm_mday);
 	struct _stat fileStat;
 	if ((_stat(m_CurrentPath, &fileStat)==0) && (fileStat.st_mode & _S_IFDIR))
 	{

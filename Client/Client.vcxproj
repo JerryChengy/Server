@@ -36,16 +36,20 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\Resource\Client\Client\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;..\Common;..\Packets</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\Common;..\Common\Packets;.\Lua;..\Common\Lua;..\Common\Lua\SrcCode</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CLIENT_</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;ws2_32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;ws2_32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);LuaLib.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\Lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -64,11 +68,14 @@
   <ItemGroup>
     <ClInclude Include="..\Common\cw_assert.h" />
     <ClInclude Include="..\Common\cw_browsedir.h" />
+    <ClInclude Include="..\Common\cw_clearserializer.h" />
     <ClInclude Include="..\Common\cw_commondefine.h" />
     <ClInclude Include="..\Common\cw_commonhandler.h" />
     <ClInclude Include="..\Common\cw_connection.h" />
     <ClInclude Include="..\Common\cw_const.h" />
+    <ClInclude Include="..\Common\cw_fieldserializer.h" />
     <ClInclude Include="..\Common\cw_handlerset.h" />
+    <ClInclude Include="..\Common\cw_hashlist.h" />
     <ClInclude Include="..\Common\cw_inibase.h" />
     <ClInclude Include="..\Common\cw_inireader.h" />
     <ClInclude Include="..\Common\cw_lock.h" />
@@ -76,39 +83,237 @@
     <ClInclude Include="..\Common\cw_packet.h" />
     <ClInclude Include="..\Common\cw_packetdefine.h" />
     <ClInclude Include="..\Common\cw_packetfactorymanager.h" />
+    <ClInclude Include="..\Common\cw_publictablestruct.h" />
+    <ClInclude Include="..\Common\cw_serializer.h" />
     <ClInclude Include="..\Common\cw_singleton.h" />
     <ClInclude Include="..\Common\cw_socketapi.h" />
     <ClInclude Include="..\Common\cw_socketbuff.h" />
     <ClInclude Include="..\Common\cw_socketdef.h" />
+    <ClInclude Include="..\Common\cw_stringhashtable.h" />
+    <ClInclude Include="..\Common\cw_table.h" />
+    <ClInclude Include="..\Common\cw_tablereader.h" />
+    <ClInclude Include="..\Common\cw_tableserializer.h" />
     <ClInclude Include="..\Common\cw_testdata.h" />
     <ClInclude Include="..\Common\cw_time.h" />
     <ClInclude Include="..\Common\cw_tools.h" />
-    <ClInclude Include="..\Packets\cw_cspackettest.h" />
-    <ClInclude Include="..\Packets\cw_scpackettest.h" />
+    <ClInclude Include="..\Common\Lua\cw_luainterface.h" />
+    <ClInclude Include="..\Common\Lua\cw_luanet.h" />
+    <ClInclude Include="..\Common\Lua\cw_luapacket.h" />
+    <ClInclude Include="..\Common\Lua\cw_luatablebase.h" />
+    <ClInclude Include="..\Common\Lua\cw_scriptinterface.h" />
+    <ClInclude Include="..\Common\Lua\SrcCode\lapi.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lauxlib.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lcode.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\ldebug.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\ldo.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lfunc.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lgc.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\llex.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\llimits.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lmem.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lobject.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lopcodes.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lparser.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lstate.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lstring.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\ltable.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\ltm.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lua.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lua.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\luaconf.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lualib.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lundump.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lvm.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lzio.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Common\Packets\cw_csmonster.h" />
+    <ClInclude Include="..\Common\Packets\cw_scmonster.h" />
     <ClInclude Include="cw_clienthandler.h" />
     <ClInclude Include="cw_serverconnection.h" />
+    <ClInclude Include="cw_tableset.h" />
+    <ClInclude Include="Lua\cw_luafunc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_assert.cpp" />
     <ClCompile Include="..\Common\cw_browsedir.cpp" />
     <ClCompile Include="..\Common\cw_connection.cpp" />
+    <ClCompile Include="..\Common\cw_fieldserializer.cpp" />
     <ClCompile Include="..\Common\cw_handlerset.cpp" />
     <ClCompile Include="..\Common\cw_inibase.cpp" />
     <ClCompile Include="..\Common\cw_inireader.cpp" />
     <ClCompile Include="..\Common\cw_log.cpp" />
     <ClCompile Include="..\Common\cw_packet.cpp" />
     <ClCompile Include="..\Common\cw_packetfactorymanager.cpp" />
+    <ClCompile Include="..\Common\cw_serializer.cpp" />
     <ClCompile Include="..\Common\cw_singleton.cpp" />
     <ClCompile Include="..\Common\cw_socketapi.cpp" />
     <ClCompile Include="..\Common\cw_socketbuff.cpp" />
+    <ClCompile Include="..\Common\cw_tablereader.cpp" />
+    <ClCompile Include="..\Common\cw_tableserializer.cpp" />
     <ClCompile Include="..\Common\cw_time.cpp" />
     <ClCompile Include="..\Common\cw_tools.cpp" />
-    <ClCompile Include="..\Packets\cw_cspackettest.cpp" />
-    <ClCompile Include="..\Packets\cw_scpackettest.cpp" />
+    <ClCompile Include="..\Common\Lua\cw_luainterface.cpp" />
+    <ClCompile Include="..\Common\Lua\cw_luanet.cpp" />
+    <ClCompile Include="..\Common\Lua\cw_luapacket.cpp" />
+    <ClCompile Include="..\Common\Lua\cw_luatablebase.cpp" />
+    <ClCompile Include="..\Common\Lua\cw_scriptinterface.cpp" />
+    <ClCompile Include="..\Common\Lua\SrcCode\lapi.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lauxlib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lbaselib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lcode.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ldblib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ldebug.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ldo.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ldump.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lfunc.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lgc.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\linit.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\liolib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\llex.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lmathlib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lmem.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\loadlib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lobject.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lopcodes.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\loslib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lparser.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lstate.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lstring.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lstrlib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ltable.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ltablib.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ltm.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lua.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\luac.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lundump.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lvm.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lzio.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\print.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Common\Packets\cw_csmonster.cpp" />
+    <ClCompile Include="..\Common\Packets\cw_scmonster.cpp" />
     <ClCompile Include="cw_clienthandlerset.cpp" />
-    <ClCompile Include="cw_sctestpackethandler.cpp" />
+    <ClCompile Include="cw_scmonsterpackethandler.cpp" />
     <ClCompile Include="cw_serverconnection.cpp" />
     <ClCompile Include="cw_client.cpp" />
+    <ClCompile Include="cw_tableset.cpp" />
+    <ClCompile Include="Lua\cw_luafuncregister.cpp" />
+    <ClCompile Include="Lua\cw_luaplayer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Common\Lua\SrcCode\lua5.1.def">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

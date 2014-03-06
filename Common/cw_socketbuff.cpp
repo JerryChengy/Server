@@ -268,3 +268,13 @@ bool CSocketBuff::Flush()
 	}
 	return true;
 }
+
+void CSocketBuff::FillString( const char* pStr, short iStrLen )
+{
+	if (!pStr)
+	{
+		return ;
+	}
+	Fill((char*)(void *)&iStrLen, sizeof(iStrLen));
+	Fill(pStr, iStrLen);
+}

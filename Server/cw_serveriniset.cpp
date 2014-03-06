@@ -9,14 +9,14 @@ bool CServerIniSet::Init()
 {
 	new CIniReader;
 
-	bool bRet = m_Test.Load("./Config/config.ini", "TEST");
+	bool bRet = m_Test.Load("../Config/config.ini", "TEST");
 	if (!bRet)
 	{
 		Assert(false);
 		return false;
 	}	
 
-	bRet = m_ServerNet.Load("./Config/config.ini", "SERVER");
+	bRet = m_ServerNet.Load("../Config/config.ini", "SERVER");
 	if (!bRet)
 	{
 		Assert(false);

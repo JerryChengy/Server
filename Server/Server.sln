@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server.vcxproj", "{B59527BF-87F9-4A64-888D-74041D09BE93}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaLib", "..\LuaLib\LuaLib.vcxproj", "{A3330850-FB0E-491F-BF4D-819195B68D71}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,10 +13,6 @@ Global
 		{B59527BF-87F9-4A64-888D-74041D09BE93}.Debug|Win32.Build.0 = Debug|Win32
 		{B59527BF-87F9-4A64-888D-74041D09BE93}.Release|Win32.ActiveCfg = Release|Win32
 		{B59527BF-87F9-4A64-888D-74041D09BE93}.Release|Win32.Build.0 = Release|Win32
-		{A3330850-FB0E-491F-BF4D-819195B68D71}.Debug|Win32.ActiveCfg = Debug|Win32
-		{A3330850-FB0E-491F-BF4D-819195B68D71}.Debug|Win32.Build.0 = Debug|Win32
-		{A3330850-FB0E-491F-BF4D-819195B68D71}.Release|Win32.ActiveCfg = Release|Win32
-		{A3330850-FB0E-491F-BF4D-819195B68D71}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

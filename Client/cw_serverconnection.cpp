@@ -4,6 +4,8 @@
 #include "cw_packet.h"
 #include "cw_commonhandler.h"
 #include "cw_handlerset.h"
+#include "cw_scriptinterface.h"
+#include "cw_luapacket.h"
 
 SINGLETONG_IMPLEMENTION(CServerConnection)
 
@@ -91,7 +93,16 @@ void CServerConnection::ProcessInput(CConnection* pConn)
 			pConn->Close();
 			break;
 		}
-
+		if (iPacketID < EM_PACKET_TYPE_START)
+		{
+			int nRet = SCRIPTMANAGER.CallScript(3, "ProcessPacket", pConn->GetSocket(), iPacketID);
+			if (nRet == 0)
+			{
+				break;
+			}
+			continue;
+		}
+		
 		CPacket* pPacket = CPacketFactoryManager::GetSingleton().GeneratePacket(iPacketID);
 		if (!pPacket)
 		{
@@ -182,7 +193,13 @@ void CServerConnection::ProcessNetData()
 	}
 }
 
-void SendPacket( CPacket* pPacket )
+void SendLuaPacket( )
+{
+	
+	SendLuaPacket(CServerConnection::GetSingleton().GetSocket());
+}
+
+void SendPacket(CPacket* pPacket)
 {
 	CServerConnection::GetSingleton().SendPacket(pPacket);
 }

@@ -1,0 +1,6 @@
+ID	脚本名称
+INT	STRING
+3	../../Public/Script/packet/packet_main.lua
+4	../../Public/Script/packet/packet_player.lua
+5	../../Public/Script/packet/packet_const.lua
+6	../../Public/Script/packet/packet_test.lua

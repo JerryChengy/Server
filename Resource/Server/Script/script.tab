@@ -1,0 +1,4 @@
+ID	脚本名称
+INT	STRING
+1	../Script/test.lua
+2	../Script/test1.lua

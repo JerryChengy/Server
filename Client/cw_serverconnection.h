@@ -14,6 +14,10 @@ public:
 	void					ProcessNetData();
 	static void					ProcessInput(CConnection* pConn);
 	void					SetProcessInputFunc(ConnCallBack func);
+	CSocketBuff*			GetSendBuff(){ return m_ServerConn.GetSendBuff(); }		
+	CSocketBuff*			GetRecvBuff(){ return m_ServerConn.GetRecvBuff(); }
+	void					CloseConn(){ m_ServerConn.Close(); }
+	int						GetSocket(){ return m_ServerConn.GetSocket(); }
 protected:
 private:
 	CConnection				m_ServerConn;
@@ -21,5 +25,6 @@ private:
 };
 
 
+void	SendLuaPacket();
 void	SendPacket(CPacket* pPacket);
 #endif

@@ -1,3 +1,3 @@
 #include "cw_commonhandler.h"
 
-int CSTestPacketHandler(CPacket* pPacket, CConnection* pConnection);
+int CSMonsterPacketHandler(CPacket* pPacket, CConnection* pConnection);

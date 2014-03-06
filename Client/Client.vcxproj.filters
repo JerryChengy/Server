@@ -16,6 +16,18 @@
     <Filter Include="Handler">
       <UniqueIdentifier>{42fe50d2-7e5d-4786-8a4e-3fe523e61165}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{9cd34e49-b8d5-42c0-9359-2ce08bde33fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TableDB">
+      <UniqueIdentifier>{e98ae8cc-07b5-4384-8760-cd3b9d53e103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Lua">
+      <UniqueIdentifier>{8dcb815c-3901-45e5-ab26-cb29ae74ad02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Lua\SrcCode">
+      <UniqueIdentifier>{f1ef442a-30d9-4a14-8847-9c6cdd5fd595}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\cw_time.h">
@@ -66,14 +78,8 @@
     <ClInclude Include="cw_serverconnection.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="..\Packets\cw_cspackettest.h">
-      <Filter>Packets</Filter>
-    </ClInclude>
     <ClInclude Include="..\Common\cw_handlerset.h">
       <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Packets\cw_scpackettest.h">
-      <Filter>Packets</Filter>
     </ClInclude>
     <ClInclude Include="..\Common\cw_tools.h">
       <Filter>Common</Filter>
@@ -92,6 +98,132 @@
     </ClInclude>
     <ClInclude Include="..\Common\cw_testdata.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="cw_tableset.h">
+      <Filter>TableDB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_clearserializer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_fieldserializer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_hashlist.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_serializer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_stringhashtable.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_table.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_tablereader.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_tableserializer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lapi.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lauxlib.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lcode.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\ldebug.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\ldo.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lfunc.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lgc.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\llex.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\llimits.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lmem.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lobject.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lopcodes.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lparser.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lstate.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lstring.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\ltable.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\ltm.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lua.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lua.hpp">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\luaconf.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lualib.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lundump.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lvm.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\SrcCode\lzio.h">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\cw_scriptinterface.h">
+      <Filter>Common\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\cw_luainterface.h">
+      <Filter>Common\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\cw_luanet.h">
+      <Filter>Common\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\cw_luapacket.h">
+      <Filter>Common\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\cw_luatablebase.h">
+      <Filter>Common\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\cw_publictablestruct.h">
+      <Filter>TableDB</Filter>
+    </ClInclude>
+    <ClInclude Include="Lua\cw_luafunc.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Packets\cw_scmonster.h">
+      <Filter>Packets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Packets\cw_csmonster.h">
+      <Filter>Packets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,20 +254,11 @@
     <ClCompile Include="cw_serverconnection.cpp">
       <Filter>Network</Filter>
     </ClCompile>
-    <ClCompile Include="..\Packets\cw_cspackettest.cpp">
-      <Filter>Packets</Filter>
-    </ClCompile>
     <ClCompile Include="..\Common\cw_handlerset.cpp">
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="cw_clienthandlerset.cpp">
       <Filter>Network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Packets\cw_scpackettest.cpp">
-      <Filter>Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="cw_sctestpackethandler.cpp">
-      <Filter>Handler</Filter>
     </ClCompile>
     <ClCompile Include="cw_client.cpp">
       <Filter>Main</Filter>
@@ -155,5 +278,151 @@
     <ClCompile Include="..\Common\cw_inireader.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\Common\cw_fieldserializer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\cw_serializer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\cw_tablereader.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\cw_tableserializer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="cw_tableset.cpp">
+      <Filter>TableDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\print.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lapi.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lauxlib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lbaselib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lcode.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ldblib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ldebug.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ldo.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ldump.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lfunc.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lgc.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\linit.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\liolib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\llex.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lmathlib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lmem.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\loadlib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lobject.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lopcodes.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\loslib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lparser.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lstate.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lstring.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lstrlib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ltable.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ltablib.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\ltm.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lua.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\luac.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lundump.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lvm.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\SrcCode\lzio.c">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\cw_luainterface.cpp">
+      <Filter>Common\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\cw_luanet.cpp">
+      <Filter>Common\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\cw_luapacket.cpp">
+      <Filter>Common\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\cw_luatablebase.cpp">
+      <Filter>Common\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\cw_scriptinterface.cpp">
+      <Filter>Common\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua\cw_luafuncregister.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua\cw_luaplayer.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Packets\cw_csmonster.cpp">
+      <Filter>Packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Packets\cw_scmonster.cpp">
+      <Filter>Packets</Filter>
+    </ClCompile>
+    <ClCompile Include="cw_scmonsterpackethandler.cpp">
+      <Filter>Handler</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Common\Lua\SrcCode\lua5.1.def">
+      <Filter>Common\Lua\SrcCode</Filter>
+    </None>
   </ItemGroup>
 </Project>

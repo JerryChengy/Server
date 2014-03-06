@@ -3,5 +3,5 @@
 #include "cw_commonhandler.h"
 
 
-int SCTestPacketHandler(CPacket* pPacket, CConnection* pConnection);
+int SCMonsterPacketHandler(CPacket* pPacket, CConnection* pConnection);
 #endif

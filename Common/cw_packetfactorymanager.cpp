@@ -1,13 +1,13 @@
 #include "cw_packetfactorymanager.h"
 #include "cw_handlerset.h"
-#include "cw_cspackettest.h"
-#include "cw_scpackettest.h"
+#include "cw_csmonster.h"
+#include "cw_scmonster.h"
 
 SINGLETONG_IMPLEMENTION(CPacketFactoryManager)
 void CPacketFactoryManager::Init()
 {
-	FACTORY_REGISTER(EM_PACKET_TYPE_CSTEST, CCSTestPacketFactory);
-	FACTORY_REGISTER(EM_PACKET_TYPE_SCTEST, CSCTestPacketFactory);
+	FACTORY_REGISTER(EM_PACKET_TYPE_CSMONSTER, CCSMonsterPacketFactory);
+	FACTORY_REGISTER(EM_PACKET_TYPE_SCMONSTER, CSCMonsterPacketFactory);
 }
 
 CPacket* CPacketFactoryManager::GeneratePacket(short sPacketId)

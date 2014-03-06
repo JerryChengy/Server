@@ -6,10 +6,13 @@
 #include "cw_time.h"
 #include "cw_log.h"
 #include "cw_serverconnection.h"
-#include "cw_cspackettest.h"
 #include "cw_handlerset.h"
 #include "cw_tools.h"
-#include "cw_scpackettest.h"
+#include "cw_scriptinterface.h"
+#include "cw_tableset.h"
+#include "cw_luapacket.h"
+#include "cw_csmonster.h"
+#include "cw_scmonster.h"
 
 bool Init();
 void Work();
@@ -28,7 +31,7 @@ void Work()
 {	
 	while (1)
 	{	
-		CCSTestPacket packet;
+		/*CCSMonsterPacket packet;
 		packet.SetNum(512);
 		packet.SetStr("hello world!");
 		HumanData humanData;
@@ -36,7 +39,19 @@ void Work()
 		humanData.m_Sex = 1;
 		CTools::Strcpy(humanData.m_Name, "chengyao", sizeof(humanData.m_Name));
 		packet.SetHumanData(humanData);
-		SendPacket(&packet);
+		SendPacket(&packet);*/
+		int iRet = InitLuaPacketData(GetLuaPacketID("CSPlayer"));
+		if (iRet == 0)
+		{
+			return ;
+		}
+		SetLuaPacketIData(1, 100);
+		SetLuaPacketIData(2, 533);
+		PacketHumanData data;
+		data.m_Data.m_ID = 222;
+		data.m_Data.m_Sex = 1;
+		SetLuaPacketPData(3, &data);
+		SendLuaPacket();
 		CServerConnection::GetSingleton().ProcessNetData();
 		::Sleep(100);
 	}	
@@ -45,13 +60,29 @@ bool Init()
 {
 	new CTimeManager;
 	new CLogManager;
+	new CTableSet;
 	new CPacketHandlerSet;
 	new CPacketFactoryManager;
 	new CServerConnection;
+	new CScriptInterface;
 	CTimeManager::GetSingleton().Init();
 	CLogManager::GetSingleton().Init();	
 	bool bRet = CServerConnection::GetSingleton().Init();	
 	if (!bRet)
+	{
+		return false;
+	}
+	if (!SCRIPTMANAGER.Init())
+	{
+		LOG_DEBUG("Lua Init Failed!");
+		return 0;
+	}
+	bRet = CTableSet::GetSingleton().Init();
+	if (!bRet)
+	{
+		return false;
+	}
+	if (!SCRIPTMANAGER.Load())
 	{
 		return false;
 	}

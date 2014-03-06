@@ -15,6 +15,8 @@ public:
 	//往缓冲区里填充数据
 	void			Fill(const char* pBuff, int iBuffLen);
 
+	void			FillString(const char* pStr, short iStrLen);
+
 	void			BeginParse();
 	void			EndParse();
 	void			Recover(){ m_iHead = m_iOldHead; m_iTail = m_iOldTail; }
