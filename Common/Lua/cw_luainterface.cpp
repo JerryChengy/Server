@@ -26,10 +26,11 @@ bool CLuaInterface::Init()
 		return false;
 	}
 	new CScriptEnum;
-	CScriptEnum::GetSingleton().Init(m_pState);
+	
 	luaL_openlibs(m_pState);
 	RegisterLuaFunc();
 	RegisterAllTable(m_pState);
+	CScriptEnum::GetSingleton().Init(m_pState);
 	CScriptEnum::GetSingleton().RegisterAll();
 	return true;
 }
@@ -113,4 +114,23 @@ int CLuaInterface::CallScript(char* szFuncName, const char* szFormat, ...)
 		return -1;
 	}	
 	return static_cast<int>(lua_tonumber(m_pState, -1));	
+}
+
+bool CLuaInterface::CreateTable(lua_State* L, const char* pTblName )
+{
+	if (!pTblName)
+	{
+		return false;
+	}
+	luaL_findtable(L, LUA_GLOBALSINDEX, pTblName, 0);
+	if (!lua_istable(L, -1))
+	{
+		AssertEx(false, "can not create table! stack overflow!");
+		return false;
+	}
+	//lua_newtable(L);  /* create table */
+	lua_pushvalue(L, -1);
+	lua_setfield(L, LUA_GLOBALSINDEX, pTblName);  
+	lua_pop(L, 1);
+	return true;
 }

@@ -18,6 +18,7 @@ public:
 	bool Load(const char* pFileName);
 	int CallScript(char* szFuncName, const char* szFormat, ...);
 	void RegisterTable();
+	bool CreateTable(lua_State* L, const char* pTblName);
 protected:
 public:
 	lua_State* m_pState;

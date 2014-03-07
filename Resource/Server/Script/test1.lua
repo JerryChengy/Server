@@ -210,6 +210,9 @@ function player:sethp(hp)
 end
 function x000002_Test(...)
 	print("enum: "..EM_PACKET_TYPE.SCMONSTER)
+	EM_PACKET_TYPE.SCMONSTER = 20
+	print("enum: "..EM_PACKET_TYPE.SCMONSTER);
+	print("enum: "..EM_PACKET_TYPE.CSMONSTER);
 	--local typeinfo = assert(TestTable[3], "test")
 	--print(typeinfo[1])
 	--print(TestTable:key)
