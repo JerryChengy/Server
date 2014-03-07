@@ -28,6 +28,12 @@
     <Filter Include="Common\Lua\SrcCode">
       <UniqueIdentifier>{f1ef442a-30d9-4a14-8847-9c6cdd5fd595}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\Shm">
+      <UniqueIdentifier>{3955a274-34e1-44c6-b599-41f909a7eda5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shm">
+      <UniqueIdentifier>{8ab0c911-a8fa-47d3-b561-b43c0f9efac3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\cw_time.h">
@@ -225,6 +231,36 @@
     <ClInclude Include="..\Common\Packets\cw_csmonster.h">
       <Filter>Packets</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_shmutil.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_sharememoryapi.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_shmDefine.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_shmpool.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_shmunit.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="cw_inistruct.h">
+      <Filter>TableDB</Filter>
+    </ClInclude>
+    <ClInclude Include="cw_iniset.h">
+      <Filter>TableDB</Filter>
+    </ClInclude>
+    <ClInclude Include="Shm\cw_shmplayer.h">
+      <Filter>Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="Shm\cw_shmmanager.h">
+      <Filter>Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Lua\cw_luaenum.h">
+      <Filter>Common\Lua</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_connection.cpp">
@@ -418,6 +454,27 @@
     </ClCompile>
     <ClCompile Include="cw_scmonsterpackethandler.cpp">
       <Filter>Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Shm\cw_sharememoryapi.cpp">
+      <Filter>Common\Shm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Shm\cw_shmutil.cpp">
+      <Filter>Common\Shm</Filter>
+    </ClCompile>
+    <ClCompile Include="cw_iniset.cpp">
+      <Filter>TableDB</Filter>
+    </ClCompile>
+    <ClCompile Include="Shm\cw_shmplayer.cpp">
+      <Filter>Shm</Filter>
+    </ClCompile>
+    <ClCompile Include="Shm\cw_shmmanager.cpp">
+      <Filter>Shm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Lua\cw_luaenum.cpp">
+      <Filter>Common\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua\cw_enumregister.cpp">
+      <Filter>Lua</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

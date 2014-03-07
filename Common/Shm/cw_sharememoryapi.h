@@ -7,7 +7,7 @@ namespace ShareMemAPI
 {
 	SM_Handle	CreateShareMem(SM_KEY Key, unsigned int Size);
 
-	SM_Handle	OpenShareMem(SM_Handle handle);
+	SM_Handle	OpenShareMem(SM_KEY Key, unsigned int Size);
 
 	char*		MapShareMem(SM_Handle handle);
 

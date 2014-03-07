@@ -12,7 +12,17 @@ CScriptInterface::CScriptInterface()
 
 bool CScriptInterface::Init()
 {
-	return CLuaInterface::GetSingleton().Init();
+	bool bRet = CLuaInterface::GetSingleton().Init();
+	if (!bRet)
+	{
+		return false;
+	}
+	bRet = Load();
+	if (!bRet)
+	{
+		return false;
+	}
+	return true;
 }
 
 bool CScriptInterface::Load()

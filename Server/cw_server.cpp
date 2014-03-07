@@ -14,6 +14,8 @@
 #include "cw_tools.h"
 #include "cw_player.h"
 #include "cw_testdata.h"
+#include "cw_shmmanager.h"
+#include "cw_shmplayer.h"
 
 CPlayer* g_Player = 0;
 
@@ -31,6 +33,7 @@ bool Init()
 	new CPacketHandlerSet;
 	new CConnectionManager;
 	new CSocketServer;	
+	new SHMManager;
 
 	CTimeManager::GetSingleton().Init();
 	CLogManager::GetSingleton().Init();	
@@ -53,18 +56,22 @@ bool Init()
 
 	CSocketServer::GetSingleton().Init(g_ServerIni.m_ServerNet.m_Port);
 
-	if (!SCRIPTMANAGER.Load())
+	if (!SHMManager::GetSingleton().Init())
 	{
 		return false;
-	}	
+	}
 	
 	bRet = CSocketServer::GetSingleton().Listen();
 	if (!bRet)
 	{
 		return false;
 	}
-	int iRet = SCRIPTMANAGER.CallScript(2, "Test", 34, 0);
-	LOG_DEBUG("iRet: %d", iRet);
+	/*int iRet = SCRIPTMANAGER.CallScript(2, "Test", 34, 0);
+	LOG_DEBUG("iRet: %d", iRet);*/
+	HumanData data;
+	data.m_ID = 111;
+	data.m_Sex = 1;
+	SHMPlayer::GetSingleton().SetPlayerData(data, 0);
 	LOG_DEBUG("Init OK!");
 	LOG_DEBUG("Listen...");
 	return true;
@@ -75,8 +82,12 @@ void Work()
 	while (1)
 	{
 		CSocketServer::GetSingleton().Work();
-		::Sleep(10);
+		SLEEP(10);
 	}
+}
+void Exit()
+{
+	SHMManager::GetSingleton().Exit();
 }
 int main()
 {
@@ -85,5 +96,7 @@ int main()
 		return 0;
 	}
 	Work();	
+	Exit();
 	return 0;
 };
+

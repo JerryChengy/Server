@@ -99,4 +99,10 @@ struct Table_Field
 	}
 };
 //#define Assert(x) if(x) { Ass}
+
+#if defined (_LINUX64_)
+#define SLEEP(mseconds)	usleep((mseconds)*1000)
+#elif defined (_WIN32_)
+#define SLEEP(mseconds)	Sleep((mseconds))
+#endif
 #endif

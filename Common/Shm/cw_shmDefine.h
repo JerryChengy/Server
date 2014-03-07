@@ -7,10 +7,19 @@
 #define INVALID_SM_HANDLE (-1)
 #endif
 
+
 struct SHMHead 
 {
-	SM_KEY			m_Key;
-	unsigned int	m_Size;
-
+	SM_KEY		m_Key;
+	UINT		m_Size;
+	void		CleanUp()
+	{
+		m_Key = -1;
+		m_Size = 0;
+	}
+	SHMHead()
+	{
+		CleanUp();
+	}
 };
 #endif

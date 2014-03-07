@@ -23,7 +23,7 @@ bool CServerIniSet::Init()
 		return false;
 	}	
 
-	bRet = m_Shm.Load("../Config/config.ini", "SHM");
+	bRet = m_Shm.Load("../../Public/Config/config.ini", "SHM");
 	if (!bRet)
 	{
 		Assert(false);

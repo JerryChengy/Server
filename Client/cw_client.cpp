@@ -13,9 +13,13 @@
 #include "cw_luapacket.h"
 #include "cw_csmonster.h"
 #include "cw_scmonster.h"
+#include "cw_iniset.h"
+#include "cw_shmmanager.h"
+#include "cw_shmplayer.h"
 
 bool Init();
 void Work();
+void Exit();
 int main()
 {
 	
@@ -25,8 +29,13 @@ int main()
 		return 0;
 	}
 	Work();
+	Exit();
 	return 0;
 };
+void Exit()
+{
+	SHMManager::GetSingleton().Exit();
+}
 void Work()
 {	
 	while (1)
@@ -40,10 +49,10 @@ void Work()
 		CTools::Strcpy(humanData.m_Name, "chengyao", sizeof(humanData.m_Name));
 		packet.SetHumanData(humanData);
 		SendPacket(&packet);*/
-		int iRet = InitLuaPacketData(GetLuaPacketID("CSPlayer"));
+		/*int iRet = InitLuaPacketData(GetLuaPacketID("CSPlayer"));
 		if (iRet == 0)
 		{
-			return ;
+		return ;
 		}
 		SetLuaPacketIData(1, 100);
 		SetLuaPacketIData(2, 533);
@@ -51,15 +60,19 @@ void Work()
 		data.m_Data.m_ID = 222;
 		data.m_Data.m_Sex = 1;
 		SetLuaPacketPData(3, &data);
-		SendLuaPacket();
-		CServerConnection::GetSingleton().ProcessNetData();
-		::Sleep(100);
+		SendLuaPacket();*/
+		//CServerConnection::GetSingleton().ProcessNetData();
+		HumanData data;
+		SHMPlayer::GetSingleton().GetPlayerData(data, 0);
+		LOG_DEBUG("shm human data: %d,  %d", data.m_ID, data.m_Sex);
+		::Sleep(1000);
 	}	
 }
 bool Init()
 {
 	new CTimeManager;
 	new CLogManager;
+	new CIniSet;
 	new CTableSet;
 	new CPacketHandlerSet;
 	new CPacketFactoryManager;
@@ -82,9 +95,15 @@ bool Init()
 	{
 		return false;
 	}
-	if (!SCRIPTMANAGER.Load())
+	bRet = CIniSet::GetSingleton().Init();
+	if (!bRet)
 	{
 		return false;
 	}
+	if (!SHMManager::GetSingleton().Init())
+	{
+		return false;
+	}
+	
 	return true;
 }

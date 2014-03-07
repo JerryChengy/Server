@@ -35,6 +35,9 @@
     <Filter Include="Common\Shm">
       <UniqueIdentifier>{5563dc48-1789-452b-88d7-8debf1a46a89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shm">
+      <UniqueIdentifier>{849e39c6-de96-4db0-9a85-51a3211f1be4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\cw_singleton.h">
@@ -256,6 +259,18 @@
     <ClInclude Include="..\Common\Lua\cw_luaenum.h">
       <Filter>Common\Lua</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_shmutil.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Shm\cw_shmunit.h">
+      <Filter>Common\Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="Shm\cw_shmplayer.h">
+      <Filter>Shm</Filter>
+    </ClInclude>
+    <ClInclude Include="Shm\cw_shmmanager.h">
+      <Filter>Shm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_packet.cpp">
@@ -470,6 +485,15 @@
     </ClCompile>
     <ClCompile Include="Lua\cw_enumregister.cpp">
       <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Shm\cw_shmutil.cpp">
+      <Filter>Common\Shm</Filter>
+    </ClCompile>
+    <ClCompile Include="Shm\cw_shmmanager.cpp">
+      <Filter>Shm</Filter>
+    </ClCompile>
+    <ClCompile Include="Shm\cw_shmplayer.cpp">
+      <Filter>Shm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

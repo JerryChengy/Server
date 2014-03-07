@@ -52,17 +52,27 @@ namespace ShareMemAPI
 #elif defined (_WIN32_)
 		char keybuf[64] = {};
 		_snprintf(keybuf, sizeof(keybuf)-1, "%d", Key);
+#if defined (_CLIENT_)
+		return CreateFileMapping((HANDLE)0xFFFFFFFFFFFFFFFF, NULL, PAGE_READWRITE, 0, Size, (LPCWSTR)keybuf);
+#else
 		return CreateFileMapping((HANDLE)0xFFFFFFFFFFFFFFFF, NULL, PAGE_READWRITE, 0, Size, (LPCWSTR)keybuf);
 #endif
+		
+#endif
 	}
-	SM_Handle OpenShareMem( SM_Handle handle )
+	SM_Handle OpenShareMem( SM_KEY Key, unsigned int Size )
 	{
 #if defined (_LINUX64_)
 		return shmget(key, Size, 0);
 #elif defined (_WIN32_)
 		char keybuf[64] = {};
 		_snprintf(keybuf, sizeof(keybuf)-1, "%d", Key);
+#if defined (_CLIENT_)
 		return OpenFileMapping(FILE_MAP_ALL_ACCESS, TRUE, (LPCWSTR)keybuf);
+#else
+		return OpenFileMapping(FILE_MAP_ALL_ACCESS, TRUE, (LPCWSTR)keybuf);
+#endif
+		
 #endif
 
 	}
