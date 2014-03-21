@@ -3,6 +3,56 @@
 #include "cw_assert.h"
 
 
+int CTools::Snprintf(char* pBuffer, int maxlen, const char* pFormat,...)
+{
+	if (!pBuffer || !pFormat)
+	{
+		return -1;
+	}
+	int result;
+	va_list argptr;
+	va_start(argptr, pFormat);
+#if defined(_LINUX64_)
+	result = vsnprintf(pBuffer, maxlen, pFormat, argptr);
+#elif defined(_WIN32_)
+	result = _vsnprintf(pBuffer, maxlen, pFormat, argptr);
+#endif
+	va_end(argptr);
+	return result;
+}
+char* CTools::Strcat(char* pDes, char* pSrc, int iLen)
+{
+	if (!pDes || !pSrc)
+	{
+		return 0;
+	}
+	int iDesLen = Strlen(pDes);
+	int iSrcLen = Strlen(pSrc);
+	if (iDesLen + iSrcLen >= iLen)
+	{
+		Assert(false);
+		return 0;
+	}
+	return ::strcat(pDes, psrc);
+}
+int CTools::Stricmp(const char* pStr1, const char* pStr2)
+{
+	if (!pStr1)
+	{
+		Assert(false);
+		if (!pStr2)
+		{
+			return 0;
+		}
+		return -1;
+	}
+	if (!pStr2)
+	{
+		Assert(false);
+		return 1;
+	}
+	return stricmp(pStr1, pStr2);
+}
 int CTools::Strcmp(const char* pStr1, const char* pStr2)
 {
 	if (!pStr1)
@@ -293,3 +343,4 @@ void chunkid (char *out, const char *source, size_t bufflen) {
 		}
 	}
 }
+

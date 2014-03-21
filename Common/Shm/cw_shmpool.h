@@ -3,6 +3,7 @@
 #include "cw_sharememoryapi.h"
 #include "cw_shmDefine.h"
 #include "cw_assert.h"
+#include "cw_log.h"
 
 template<typename T>
 class SHMPool
@@ -24,6 +25,7 @@ public:
 			}
 			m_DataPtr = new T*[m_Size];
 			SHMHead* pSHMHead = (SHMHead*)(void*)pMemHead;
+			LOG_DEBUG("client shm head addr: %p", pMemHead);
 			pSHMHead->m_Key = key;
 			pSHMHead->m_Size = m_Size;
 			char* pDataHead = pMemHead + sizeof(SHMHead);
@@ -47,6 +49,7 @@ public:
 		{
 			return false;
 		}
+		LOG_DEBUG("server shm head addr: %p", pMemHead);
 		SHMHead* pSHMHead = (SHMHead*)(void*)pMemHead;
 		if (pSHMHead->m_Key != Key || pSHMHead->m_Size != m_Size)
 		{

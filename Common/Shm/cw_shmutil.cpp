@@ -1,6 +1,6 @@
 #include "cw_commondefine.h"
 #include "cw_shmutil.h"
-
+#include "cw_log.h"
 
 
 void sm_lock( char& flag, char type )
@@ -16,6 +16,7 @@ void sm_lock( char& flag, char type )
 			}
 			else
 			{
+				LOG_DEBUG("try locking");
 				SLEEP(1);
 				continue;
 			}
@@ -34,6 +35,7 @@ void sm_unlock( char& flag)
 			flag = SM_FREE;
 			if (flag != SM_FREE)
 			{
+				LOG_DEBUG("try unlocking");
 				SLEEP(1);
 				continue;
 			}

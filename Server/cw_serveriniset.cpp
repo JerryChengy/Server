@@ -29,5 +29,12 @@ bool CServerIniSet::Init()
 		Assert(false);
 		return false;
 	}	
+
+	bRet = m_DB.Load("../Config/config.ini", "DB");
+	if (!bRet)
+	{
+		Assert(false);
+		return false;
+	}	
 	return true;
 }

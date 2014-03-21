@@ -38,6 +38,9 @@
     <Filter Include="Shm">
       <UniqueIdentifier>{849e39c6-de96-4db0-9a85-51a3211f1be4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{5e003f3f-287f-441e-bd51-12fa269c691a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\cw_singleton.h">
@@ -271,6 +274,18 @@
     <ClInclude Include="Shm\cw_shmmanager.h">
       <Filter>Shm</Filter>
     </ClInclude>
+    <ClInclude Include="cw_mysqlwrap.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="cw_dbmanager.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="cw_dbheader.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="cw_sqlstatement.h">
+      <Filter>DB</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_packet.cpp">
@@ -494,6 +509,15 @@
     </ClCompile>
     <ClCompile Include="Shm\cw_shmplayer.cpp">
       <Filter>Shm</Filter>
+    </ClCompile>
+    <ClCompile Include="cw_mysqlwrap.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="cw_dbmanager.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="cw_serverbak.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

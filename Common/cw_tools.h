@@ -25,7 +25,9 @@ public:
 	//这里的算法是从 Lua 中看来的。
 	static unsigned long hash(const char *name,size_t len);
 	static int Strcmp(const char* pStr1, const char* pStr2);
-
+	static int Stricmp(const char* pStr1, const char* pStr2);
+	static int Snprintf(char* pBuffer, int maxlen, const char* pFormat,...);
+	static char* Strcat(char* pDes, char* pSrc, int iLen);
 protected:
 private:
 };

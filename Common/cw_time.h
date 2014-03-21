@@ -11,10 +11,13 @@ public:
 	void Init();
 	void Tick();
 	const tm& GetThisTime();
+
+	void GetDateByTime(UINT uTime, int& nYear, int& nMonth, int& nDay);
 protected:
 
 private:
 	void	_SetThisTime();
+
 private:
 	time_t	m_thisTime;
 	tm		m_thisTMTime;

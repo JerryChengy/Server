@@ -22,5 +22,9 @@ const int BUFF_LEN_32 = 32;
 const int MAX_LINE_CHAR_COUNT = 1024;	//每行的最多字符个数
 const int MAX_BLOCK_CHAR_COUNT = MAX_LINE_CHAR_COUNT;  //每块的最多字符个数（块与块之间用TAB键隔开）
 const int HEAD_LINE_COUINT = 2;	   //表格文件中头行数（非有效数据行）
+const int MAX_IP_LEN = 16;			//IP地址最大长度
+const int MAX_DB_NAME_LEN = 32;		//DB名称长度
+const int MAX_DB_USERNAME_LEN = 32;	//DB用户名最大长度
+const int MAX_DB_PWD_LEN = 32;		//DB密码最大长度
 
 #endif

@@ -13,6 +13,16 @@ void CTimeManager::_SetThisTime()
 	m_thisTMTime.tm_mon += 1;
 }
 
+void	 CTimeManager::GetDateByTime(UINT uTime, int& nYear, int& nMonth, int& nDay)
+{
+	time_t ttime = (time_t)uTime;
+	tm TMTime;
+	ttime = (unsigned int)ttime + SECONDS_PER_HOUR*SERVER_TIME_ZONE;
+	gmtime_s(&TMTime, &ttime);
+	nYear = TMTime.tm_year + 1900;
+	nMonth = TMTime.tm_mon + 1;
+	nDay = TMTime.tm_mday;
+}
 void CTimeManager::Init()
 {
 	_SetThisTime();

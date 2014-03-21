@@ -17,6 +17,11 @@ struct HumanData
 	}
 	HumanData(){ CleanUp(); }
 };
+//static int MaxHumanDataVersion = 0;
+//void UpgradeHumanData(int fromVer, int toVer, void* fromData, void* toData)
+//{
+//
+//}
 struct PacketHumanData 
 {
 	int		m_Size;

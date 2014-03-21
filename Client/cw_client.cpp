@@ -64,6 +64,7 @@ void Work()
 		//CServerConnection::GetSingleton().ProcessNetData();
 		HumanData data;
 		SHMPlayer::GetSingleton().GetPlayerData(data, 0);
+		//LOG_DEBUG("sizeof data: %d", sizeof(data));
 		LOG_DEBUG("shm human data: %d,  %d", data.m_ID, data.m_Sex);
 		::Sleep(1000);
 	}	

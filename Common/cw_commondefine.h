@@ -26,13 +26,20 @@ using namespace std;
 typedef vector<string> MUL_STRING;
 typedef vector<int>	MUL_INT;
 typedef unsigned int		UINT;
+typedef int				BOOL;
+#define TRUE	1
+#define FALSE	0
+#define ZEROMEM(x) memset(x, 0, sizeof(x));
+#define NULL_STR	""
 
 #if defined (_WIN32_)
 	typedef void*	SM_Handle;
 	typedef unsigned int SM_KEY;
+	typedef unsigned __int64 ullong;
 #elif defined (_LINUX64_)
 	typedef int		SM_Handle;
 	typedef key_t   SM_KEY;
+	typedef unsigned long long ullong;
 #endif
 struct IntArray 
 {

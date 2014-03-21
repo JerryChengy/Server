@@ -16,9 +16,7 @@
 #include "cw_testdata.h"
 #include "cw_shmmanager.h"
 #include "cw_shmplayer.h"
-
-CPlayer* g_Player = 0;
-
+#include "cw_dbmanager.h"
 
 bool Init()
 {
@@ -34,6 +32,7 @@ bool Init()
 	new CConnectionManager;
 	new CSocketServer;	
 	new SHMManager;
+	new CDBManager;
 
 	CTimeManager::GetSingleton().Init();
 	CLogManager::GetSingleton().Init();	
@@ -68,10 +67,17 @@ bool Init()
 	}
 	/*int iRet = SCRIPTMANAGER.CallScript(2, "Test", 34, 0);
 	LOG_DEBUG("iRet: %d", iRet);*/
-	HumanData data;
-	data.m_ID = 111;
-	data.m_Sex = 1;
-	SHMPlayer::GetSingleton().SetPlayerData(data, 0);
+	/*while (1)
+	{
+		static int iii = 111;
+		HumanData data;
+		data.m_ID = iii++;
+		data.m_Sex = 1;
+		SHMPlayer::GetSingleton().SetPlayerData(data, 0);
+		SLEEP(1000);
+	}*/
+
+	CDBManager::GetSingleton().Init();
 	LOG_DEBUG("Init OK!");
 	LOG_DEBUG("Listen...");
 	return true;

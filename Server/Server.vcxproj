@@ -51,13 +51,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_SERVER_;_WIN32_;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\;..\Common;..\Common\Shm;..\Common\Packets;.\Shm;.\Player;.\Lua;..\Common\Lua;..\Common\Lua\SrcCode</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\GitHub\LevelDB\leveldbNative\include;E:\GitHub\LevelDB\leveldbNative\include\leveldb;$(BOOST);.\;..\Common;..\Common\Shm;..\Common\Packets;.\Shm;.\Player;.\Lua;.\Mysql;..\Common\Lua;..\Common\Lua\SrcCode</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;ws2_32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);LuaLib.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\Lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlclient.lib;LevelDB.lib;kernel32.lib;ws2_32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);LuaLib.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\Lib;$(BOOST)\stage\lib</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -194,9 +195,13 @@
     <ClInclude Include="..\Common\Shm\cw_shmunit.h" />
     <ClInclude Include="..\Common\Shm\cw_shmutil.h" />
     <ClInclude Include="cw_connectionmanager.h" />
+    <ClInclude Include="cw_dbheader.h" />
+    <ClInclude Include="cw_dbmanager.h" />
+    <ClInclude Include="cw_mysqlwrap.h" />
     <ClInclude Include="cw_serveriniset.h" />
     <ClInclude Include="cw_serverstructini.h" />
     <ClInclude Include="cw_socketserver.h" />
+    <ClInclude Include="cw_sqlstatement.h" />
     <ClInclude Include="cw_tableset.h" />
     <ClInclude Include="cw_servertablestruct.h" />
     <ClInclude Include="Lua\cw_luafunc.h" />
@@ -330,6 +335,9 @@
     <ClCompile Include="..\Common\Shm\cw_sharememoryapi.cpp" />
     <ClCompile Include="..\Common\Shm\cw_shmutil.cpp" />
     <ClCompile Include="cw_connectionmanager.cpp" />
+    <ClCompile Include="cw_dbmanager.cpp" />
+    <ClCompile Include="cw_mysqlwrap.cpp" />
+    <ClCompile Include="cw_serverbak.cpp" />
     <ClCompile Include="cw_serverhandler.h" />
     <ClCompile Include="cw_serverhandlerset.cpp" />
     <ClCompile Include="cw_serveriniset.cpp" />
