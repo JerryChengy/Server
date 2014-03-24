@@ -16,5 +16,6 @@ BOOL CDBOperatorTemplate::Init( CTemplateManager* pTemplateManager, CMysqlWrap* 
 	{
 		return FALSE;
 	}
-	m_pTableInfo
+	m_pTableInfo->m_pMysql = pMysql;
+	m_pTableInfo->m_pTemplate = pTemplateManager->
 }
