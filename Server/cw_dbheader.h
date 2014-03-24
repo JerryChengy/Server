@@ -236,14 +236,19 @@ struct DBTableInfo
 		ZEROMEM(m_FindStmtName);
 		ZEROMEM(m_LoadPrimaryStmtName);
 		ZEROMEM(m_OperatorName);
+		ZEROMEM(m_TemplateName);
 		m_PackInfoLen = 0;
 		m_PackeInfoExLen = 0;
 		m_OperatorCompareResult = EM_RESULT_TEMPLATE_COMPARE_INVALID;
 		m_HasPackData = FALSE;
+		m_pTemplate = 0;
 	}
 	EM_TYPE_DB_TABLE		m_TableEngine;
 	int						m_ColumnCount;
 	CMysqlWrap*				m_pMysql;
+	
+	CDBTemplate*			m_pTemplate;
+	char					m_TemplateName[DB_TEMPLATE_NAME_MAX_LEN];
 
 	char					m_TableName[DB_TABLE_MAX_NAME_LEN];
 	char					m_TablePackName[DB_TABLE_MAX_NAME_LEN];
@@ -267,5 +272,19 @@ struct DBTableInfo
 	EM_RESULT_OPERATOR_COMPARE	m_OperatorCompareResult;
 	char					m_OperatorName[DB_OPERATOR_NAME_MAX_LEN];
 	BOOL					m_HasPackData;
+};
+
+const int DB_TEMPLATE_NAME_MAX_LEN = 64;
+struct TemplateInfo 
+{
+	void						CleanUp()
+	{
+		m_CompareResult = EM_RESULT_TEMPLATE_COMPARE_INVALID;
+		m_DataLen = 0;
+		ZEROMEM(m_TemplateName);
+	}
+	EM_RESULT_TEMPLATE_COMPARE	m_CompareResult;
+	int							m_DataLen;
+	char						m_TemplateName[DB_TEMPLATE_NAME_MAX_LEN];
 };
 #endif

@@ -1,12 +1,15 @@
-#ifndef CW_DBOPERATOR_H
-#define CW_DBOPERATOR_H
+#ifndef CW_DBOPERATOR_TEMPLATE_H
+#define CW_DBOPERATOR_TEMPLATE_H
+#include "cw_dboperator.h"
 #include "cw_mysqlwrap.h"
-#include "cw_dbheader.h"
 
-class CDBOperator
+class CDBOperatorTemplate: public CDBOperator
 {
 public:
-	virtual	EM_TYPE_DBOPERATOR GetType()=0;
+	CDBOperatorTemplate();
+	~CDBOperatorTemplate();
+public:
+	virtual	EM_TYPE_DBOPERATOR GetType(){ return EM_TYPE_DBOPERATOR_TEMPLATE; };
 
 	virtual BOOL	Execute(char* pData) = 0;
 
@@ -24,13 +27,14 @@ public:
 
 	virtual	BOOL	EnumEnd() = 0;
 
-	virtual	BOOL	Init(CTemplateManager* pTemplateManager, CMysqlWrap* pMysql) = 0;
+	virtual	BOOL	Init(CTemplateManager* pTemplateManager, CMysqlWrap* pMysql);
 
 	virtual EM_RESULT_OPERATOR_COMPARE Compare(CDBOperatorManager* pOperatorManager) = 0;
 
 	virtual BOOL	SetName(const char* pName) = 0;
 protected:
 private:
+	DBTableInfo*			m_pTableInfo;
 };
 
 #endif

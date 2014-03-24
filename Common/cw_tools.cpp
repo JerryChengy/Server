@@ -3,6 +3,55 @@
 #include "cw_assert.h"
 
 
+bool CTools::LoadAllFileNameInDir(const char* pDir, const char* pPattern, std::vector<std::string>& vecFiles)
+{
+	if (!pDir || !pPattern)
+	{
+		return false;
+	}
+	char szDir[MAX_PATH] = {};
+	if (_fullpath(szDir, pDir, MAX_PATH) == 0)
+	{
+		return false;
+	}
+	char szOriginDir[MAX_PATH] = {};
+	_getcwd(szOriginDir, MAX_PATH);
+	if (Chdir(szDir) != 0)
+	{
+		return false;
+	}
+	int hFile;
+	_finddata_t fileinfo;
+	vecFiles.clear();
+	if ((hFile=_findfirst(pPattern, &fileinfo)) != -1)
+	{
+		do 
+		{
+			if ((fileinfo.attrib & _A_SUBDIR) == 0)
+			{
+				std::string strFileName = fileinfo.name;
+				vecFiles.push_back(strFileName);
+			}
+		} while (_findnext(hFile, &fileinfo) == 0);
+		_findclose(hFile);
+	}
+	if (Chdir(szOriginDir) != 0)
+	{
+		return false;
+	}
+	return true;
+}
+
+int CTools::Chdir(const char* pPath)
+{
+	int retValue = -1;
+#if defined (_WIN32_)
+	retValue = ::_chdir(pPath);
+#elif defined (_LINUX64_)
+	retValue = ::chdir(pPath);
+#endif
+	return retValue;
+}
 int CTools::Snprintf(char* pBuffer, int maxlen, const char* pFormat,...)
 {
 	if (!pBuffer || !pFormat)
@@ -33,7 +82,7 @@ char* CTools::Strcat(char* pDes, char* pSrc, int iLen)
 		Assert(false);
 		return 0;
 	}
-	return ::strcat(pDes, psrc);
+	return ::strcat(pDes, pSrc);
 }
 int CTools::Stricmp(const char* pStr1, const char* pStr2)
 {

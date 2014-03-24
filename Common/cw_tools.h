@@ -28,6 +28,8 @@ public:
 	static int Stricmp(const char* pStr1, const char* pStr2);
 	static int Snprintf(char* pBuffer, int maxlen, const char* pFormat,...);
 	static char* Strcat(char* pDes, char* pSrc, int iLen);
+	static int Chdir(const char* pPath);
+	static bool LoadAllFileNameInDir(const char* pDir, const char* pPattern, std::vector<std::string>& vecFiles);
 protected:
 private:
 };
