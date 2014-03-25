@@ -75,6 +75,12 @@ const int DB_PACKINFO_MAX_LEN = 1024*1024;
 const int DB_OPERATOR_NAME_MAX_LEN = 64;
 const char* DB_COLUMN_NAME_SPLIT = "_";
 
+const int DB_TEMPLATE_INC_COUNT = 64;
+
+const int DB_COLUMN_INC_COUNT = 8;
+
+const char* DB_SQL_FORMAT_DEFAULT_INT = "default 0";
+
 
 //数据库列类型
 enum EM_TYPE_DB_COLUMN
@@ -185,6 +191,7 @@ struct ColumnInfo
 		m_Len = 0;
 		m_Primary = FALSE;
 		m_NewColumn = FALSE;
+		m_pTemplate = 0;
 		m_IsUnsigned = FALSE;
 		m_HasInvalid = FALSE;
 		m_DefaultLen = 0;
@@ -201,6 +208,7 @@ struct ColumnInfo
 	int						m_Len;			//数据长度
 	BOOL					m_Primary;		//是否是主键
 	BOOL					m_NewColumn;	//是否开列
+	CDBTemplate*			m_pTemplate;
 	BOOL					m_IsUnsigned;
 	BOOL					m_HasInvalid;
 	int						m_DefaultLen;

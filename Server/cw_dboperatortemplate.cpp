@@ -19,3 +19,12 @@ BOOL CDBOperatorTemplate::Init( CTemplateManager* pTemplateManager, CMysqlWrap* 
 	m_pTableInfo->m_pMysql = pMysql;
 	m_pTableInfo->m_pTemplate = pTemplateManager->
 }
+
+BOOL CDBOperatorTemplate::_LoadPack( char* pData )
+{
+	if (!m_pTableInfo->m_HasPackData)
+	{
+		return FALSE;
+	}
+	
+}

@@ -25,6 +25,11 @@ CDBOperatorManager::~CDBOperatorManager()
 	SAFE_DELETE(m_pMysql);
 }
 
+bool CDBOperatorManager::RegisterAll()
+{
+	CDBOperator* pDBOperator = new CDBTemplateStruct();
+	Register("opt_human", pDBOperator);
+}
 bool CDBOperatorManager::Register( const char* pName, CDBOperator* pDBOperator )
 {
 	if (!pName)

@@ -30,7 +30,7 @@ protected:
 
 	bool	ReadFrom(CMemoryReader& Reader, int ProtocolVersion);
 
-
+	bool	RegisterAll();
 private:
 	bool	_EnLarge();
 

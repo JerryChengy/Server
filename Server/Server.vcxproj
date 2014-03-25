@@ -349,6 +349,7 @@
     <ClCompile Include="cw_dbmanager.cpp" />
     <ClCompile Include="cw_dboperatormanager.cpp" />
     <ClCompile Include="cw_dboperatortemplate.cpp" />
+    <ClCompile Include="cw_dbtemplatestruct.cpp" />
     <ClCompile Include="cw_dbutil.cpp" />
     <ClCompile Include="cw_mysqlwrap.cpp" />
     <ClCompile Include="cw_serverbak.cpp" />
@@ -359,6 +360,7 @@
     <ClCompile Include="cw_csmonsterpackethandler.cpp" />
     <ClCompile Include="cw_server.cpp" />
     <ClCompile Include="cw_tableset.cpp" />
+    <ClCompile Include="cw_templatemanager.cpp" />
     <ClCompile Include="Lua\cw_enumregister.cpp" />
     <ClCompile Include="Lua\cw_luafuncregister.cpp" />
     <ClCompile Include="Lua\cw_luatable.cpp" />

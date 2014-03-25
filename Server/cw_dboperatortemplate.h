@@ -17,6 +17,8 @@ public:
 
 	virtual BOOL	Load(char* pData) = 0;
 
+	virtual BOOL    _LoadPack(char* pData);
+
 	virtual EM_RESULT_FIND Find(char* pData) = 0;
 
 	virtual BOOL    Delete(char* pData) = 0;
