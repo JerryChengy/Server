@@ -106,6 +106,10 @@
     <ClInclude Include="..\Common\cw_tablereader.h" />
     <ClInclude Include="..\Common\cw_tableserializer.h" />
     <ClInclude Include="..\Common\cw_testdata.h" />
+    <ClInclude Include="..\Common\cw_thread.h" />
+    <ClInclude Include="..\Common\cw_threadexample.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\Common\cw_time.h" />
     <ClInclude Include="..\Common\cw_tools.h" />
     <ClInclude Include="..\Common\cw_hashlist.h" />

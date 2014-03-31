@@ -1,17 +1,24 @@
 #ifndef CW_LOCK_H
 #define CW_LOCK_H
-#include <Windows.h>
+#include "cw_commondefine.h"
 
 class CLock
 {
+	CRITICAL_SECTION		m_cLock; //共享锁变量
 public:
 	CLock(){ InitializeCriticalSection(&m_cLock);}
 	~CLock(){ DeleteCriticalSection(&m_cLock);}
 	void Lock(){ EnterCriticalSection(&m_cLock);}
 	void Unlock(){ LeaveCriticalSection(&m_cLock);}
-protected:
-private:
-	CRITICAL_SECTION		m_cLock; //共享锁变量
+	class Scoped
+	{
+		CLock&		m_Lock;
+	public:		
+		explicit Scoped(CLock & lock):m_Lock(lock){ m_Lock.Lock(); }
+		explicit Scoped(CLock * lock):m_Lock(*lock){ m_Lock.Lock(); }
+		~Scoped(){ m_Lock.Unlock(); }
+	};
+	
 };
 
 #endif

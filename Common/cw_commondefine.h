@@ -3,6 +3,7 @@
 
 #define FD_SETSIZE 1024
 #include <WinSock2.h>
+#include <Windows.h>
 #include <stdio.h>
 #include <string.h>
 #include <memory.h>
@@ -15,6 +16,8 @@
 #include <stdlib.h>
 #include <map>
 #include <vector>
+#include <queue>
+#include <process.h>
 using namespace std;
 
 #pragma warning(disable: 4996)

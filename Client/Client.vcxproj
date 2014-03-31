@@ -94,6 +94,8 @@
     <ClInclude Include="..\Common\cw_tablereader.h" />
     <ClInclude Include="..\Common\cw_tableserializer.h" />
     <ClInclude Include="..\Common\cw_testdata.h" />
+    <ClInclude Include="..\Common\cw_thread.h" />
+    <ClInclude Include="..\Common\cw_threadtask.h" />
     <ClInclude Include="..\Common\cw_time.h" />
     <ClInclude Include="..\Common\cw_tools.h" />
     <ClInclude Include="..\Common\Lua\cw_luaenum.h" />
@@ -207,6 +209,7 @@
     <ClCompile Include="..\Common\cw_socketbuff.cpp" />
     <ClCompile Include="..\Common\cw_tablereader.cpp" />
     <ClCompile Include="..\Common\cw_tableserializer.cpp" />
+    <ClCompile Include="..\Common\cw_threadtask.cpp" />
     <ClCompile Include="..\Common\cw_time.cpp" />
     <ClCompile Include="..\Common\cw_tools.cpp" />
     <ClCompile Include="..\Common\Lua\cw_luaenum.cpp" />

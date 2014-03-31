@@ -16,6 +16,7 @@
 #include "cw_iniset.h"
 #include "cw_shmmanager.h"
 #include "cw_shmplayer.h"
+#include "cw_threadtask.h"
 
 bool Init();
 void Work();
@@ -62,11 +63,10 @@ void Work()
 		SetLuaPacketPData(3, &data);
 		SendLuaPacket();*/
 		//CServerConnection::GetSingleton().ProcessNetData();
-		HumanData data;
-		SHMPlayer::GetSingleton().GetPlayerData(data, 0);
-		//LOG_DEBUG("sizeof data: %d", sizeof(data));
-		LOG_DEBUG("shm human data: %d,  %d", data.m_ID, data.m_Sex);
-		::Sleep(1000);
+		int* iii = new int;
+		*iii= 1;
+		TaskManager<int>::GetSingleton().AddTask(iii);
+		::Sleep(100);
 	}	
 }
 bool Init()
@@ -79,19 +79,10 @@ bool Init()
 	new CPacketFactoryManager;
 	new CServerConnection;
 	new CScriptInterface;
+	new TaskManager<int>;
 	CTimeManager::GetSingleton().Init();
 	CLogManager::GetSingleton().Init();	
-	bool bRet = CServerConnection::GetSingleton().Init();	
-	if (!bRet)
-	{
-		return false;
-	}
-	if (!SCRIPTMANAGER.Init())
-	{
-		LOG_DEBUG("Lua Init Failed!");
-		return 0;
-	}
-	bRet = CTableSet::GetSingleton().Init();
+	bool bRet = CTableSet::GetSingleton().Init();
 	if (!bRet)
 	{
 		return false;
@@ -101,10 +92,22 @@ bool Init()
 	{
 		return false;
 	}
-	if (!SHMManager::GetSingleton().Init())
+	/*bRet = CServerConnection::GetSingleton().Init();	
+	if (!bRet)
 	{
 		return false;
+	}*/
+	if (!SCRIPTMANAGER.Init())
+	{
+		LOG_DEBUG("Lua Init Failed!");
+		return 0;
 	}
+	
+	/*if (!SHMManager::GetSingleton().Init())
+	{
+		return false;
+	}*/
+	TaskManager<int>::GetSingleton().Init();
 	
 	return true;
 }
