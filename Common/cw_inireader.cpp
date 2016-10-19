@@ -86,7 +86,7 @@ bool CIniReader::Init(const char* pFileName, const char* pKeyStr)
 	m_File.open(m_FileName);
 	if (!m_File)
 	{
-		AssertEx(false, "Open file\"%s\" fail!!!", pFileName);
+		AssertEx(false, "Open file\"%s\" fail!!!, errno: %d", pFileName, GetLastError());
 		return false;
 	}
 	char szFullKeyStr[BUFF_LEN_128] = {};

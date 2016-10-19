@@ -1,6 +1,8 @@
 #ifndef CW_DBUTIL_H
 #define CW_DBUTIL_H
 
+#include "cw_dbheader.h"
+
 const char* TableType2EngineName(EM_TYPE_DB_TABLE Type);
 EM_TYPE_DB_TABLE EngineName2TableType(const char* pName);
 const char* GetCollateFlag(EM_TYPE_DB_COLUMN Type);

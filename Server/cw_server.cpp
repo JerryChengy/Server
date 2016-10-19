@@ -32,7 +32,6 @@ bool Init()
 	new CConnectionManager;
 	new CSocketServer;	
 	new SHMManager;
-	new CDBManager;
 
 	CTimeManager::GetSingleton().Init();
 	CLogManager::GetSingleton().Init();	
@@ -65,8 +64,8 @@ bool Init()
 	{
 		return false;
 	}
-	/*int iRet = SCRIPTMANAGER.CallScript(2, "Test", 34, 0);
-	LOG_DEBUG("iRet: %d", iRet);*/
+	int iRet = SCRIPTMANAGER.CallScript(2, "Test", 34, 0);
+	LOG_DEBUG("iRet: %d", iRet);
 	/*while (1)
 	{
 		static int iii = 111;
@@ -77,7 +76,6 @@ bool Init()
 		SLEEP(1000);
 	}*/
 
-	CDBManager::GetSingleton().Init();
 	LOG_DEBUG("Init OK!");
 	LOG_DEBUG("Listen...");
 	return true;

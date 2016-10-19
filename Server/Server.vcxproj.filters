@@ -274,45 +274,11 @@
     <ClInclude Include="Shm\cw_shmmanager.h">
       <Filter>Shm</Filter>
     </ClInclude>
-    <ClInclude Include="cw_mysqlwrap.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_dbmanager.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_dbheader.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_sqlstatement.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_dboperator.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_dbtemplate.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_templatemanager.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_columninfoenv.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_dbutil.h">
-      <Filter>DB</Filter>
-    </ClInclude>
     <ClInclude Include="..\Common\cw_memoryio.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="cw_dbtemplatestruct.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_dboperatormanager.h">
-      <Filter>DB</Filter>
-    </ClInclude>
-    <ClInclude Include="cw_dboperatortemplate.h">
-      <Filter>DB</Filter>
-    </ClInclude>
+    <ClInclude Include="..\Common\cw_thread.h" />
+    <ClInclude Include="..\Common\cw_threadexample.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\cw_packet.cpp">
@@ -537,35 +503,11 @@
     <ClCompile Include="Shm\cw_shmplayer.cpp">
       <Filter>Shm</Filter>
     </ClCompile>
-    <ClCompile Include="cw_mysqlwrap.cpp">
-      <Filter>DB</Filter>
-    </ClCompile>
-    <ClCompile Include="cw_dbmanager.cpp">
-      <Filter>DB</Filter>
-    </ClCompile>
     <ClCompile Include="cw_serverbak.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="cw_columninfoenv.cpp">
-      <Filter>DB</Filter>
-    </ClCompile>
-    <ClCompile Include="cw_dbutil.cpp">
-      <Filter>DB</Filter>
-    </ClCompile>
     <ClCompile Include="..\Common\cw_memoryio.cpp">
       <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="cw_dboperatormanager.cpp">
-      <Filter>DB</Filter>
-    </ClCompile>
-    <ClCompile Include="cw_dboperatortemplate.cpp">
-      <Filter>DB</Filter>
-    </ClCompile>
-    <ClCompile Include="cw_templatemanager.cpp">
-      <Filter>DB</Filter>
-    </ClCompile>
-    <ClCompile Include="cw_dbtemplatestruct.cpp">
-      <Filter>DB</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

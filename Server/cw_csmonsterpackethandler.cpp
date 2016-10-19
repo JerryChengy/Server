@@ -12,11 +12,7 @@ int CSMonsterPacketHandler(CPacket* pPacket, CConnection* pConnection)
 	}
 	CCSMonsterPacket* pCSMonsterPacket = static_cast<CCSMonsterPacket*>(pPacket);
 	const HumanData& humanData = pCSMonsterPacket->GetHumanData();
-	LOG_DEBUG("TestPacketHandler OK, Num is %d, Str is %s, Human: ID[%d], Sex[%d], Name[%s]", 
-		pCSMonsterPacket->GetNum(), 
-		pCSMonsterPacket->GetStr(),
-		humanData.m_ID,humanData.m_Sex, humanData.m_Name
-		);
+	
 	CSCMonsterPacket SCMonsterPacket;
 	SCMonsterPacket.SetNum(1111);
 	SCMonsterPacket.SetStr("wangningna");

@@ -63,7 +63,6 @@ int Lua_SendSCTestPacket(lua_State *L)
 	SetLuaPacketSData(2, "sctestpacket");
 	PacketHumanData data;
 	data.m_Data.m_ID = 999;
-	data.m_Data.m_Sex = 2;
 	SetLuaPacketPData(3, &data);
 	SendLuaPacket(iSocket);
 	return 0;
@@ -89,6 +88,5 @@ int Lua_HandleCSPlayerPacket(lua_State *L)
 	LOG_DEBUG("p1: %d", iVar1);
 	LOG_DEBUG("p2: %d", iVar2);
 	LOG_DEBUG("p3: %d", pHumanData->m_ID);
-	LOG_DEBUG("p4: %d", pHumanData->m_Sex);
 	return 0;
 }

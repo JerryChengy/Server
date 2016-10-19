@@ -7,7 +7,6 @@ class CMemoryIO
 public:
 	bool			Init(char* pSrcData, int iDataLen);
 protected:
-private:
 	char*			m_pData;
 	int				m_CurLen;
 	int				m_MaxLen;
